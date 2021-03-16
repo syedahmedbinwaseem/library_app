@@ -10,9 +10,15 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   GlobalKey<FormState> fKey = GlobalKey<FormState>();
-
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  bool showPass = true;
+  void toggle() {
+    setState(() {
+      showPass = !showPass;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -75,11 +81,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     topRight: Radius.circular(25),
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
-                  child: Form(
-                    key: fKey,
-                    child: SingleChildScrollView(
+                child: Form(
+                  key: fKey,
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 25, right: 25),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -143,23 +149,37 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(
                             height: 5,
                           ),
-                          TextFormField(
-                            controller: password,
-                            textInputAction: TextInputAction.done,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              hintText: 'Enter Password',
-                              hintStyle: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black38,
+                          Stack(
+                            children: [
+                              TextFormField(
+                                controller: password,
+                                obscureText: showPass,
+                                decoration: InputDecoration(
+                                  hintText: 'Enter Password',
+                                  hintStyle: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black38,
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.grey[100],
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
                               ),
-                              filled: true,
-                              fillColor: Colors.grey[100],
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                              Positioned(
+                                top: height * 0.005,
+                                left: width * 0.73,
+                                child: IconButton(
+                                  color: Colors.black38,
+                                  icon: showPass
+                                      ? Icon(Icons.visibility_off)
+                                      : Icon(Icons.visibility),
+                                  onPressed: toggle,
+                                ),
+                              )
+                            ],
                           ),
                           SizedBox(
                             height: 15,

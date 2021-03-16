@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -10,6 +11,13 @@ class _SignUpState extends State<SignUp> {
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  bool showPass = true;
+  void toggle() {
+    setState(() {
+      showPass = !showPass;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -84,11 +92,11 @@ class _SignUpState extends State<SignUp> {
                     topRight: Radius.circular(25),
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
-                  child: Form(
-                    key: fKey,
-                    child: SingleChildScrollView(
+                child: Form(
+                  key: fKey,
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 25, right: 25),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -175,21 +183,37 @@ class _SignUpState extends State<SignUp> {
                           SizedBox(
                             height: 5,
                           ),
-                          TextFormField(
-                            controller: password,
-                            decoration: InputDecoration(
-                              hintText: 'Enter Password',
-                              hintStyle: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black38,
+                          Stack(
+                            children: [
+                              TextFormField(
+                                controller: password,
+                                obscureText: showPass,
+                                decoration: InputDecoration(
+                                  hintText: 'Enter Password',
+                                  hintStyle: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black38,
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.grey[100],
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
                               ),
-                              filled: true,
-                              fillColor: Colors.grey[100],
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
+                              Positioned(
+                                top: height * 0.005,
+                                left: width * 0.73,
+                                child: IconButton(
+                                  color: Colors.black38,
+                                  icon: showPass
+                                      ? Icon(Icons.visibility_off)
+                                      : Icon(Icons.visibility),
+                                  onPressed: toggle,
+                                ),
+                              )
+                            ],
                           ),
                           SizedBox(
                             height: 40,
@@ -211,6 +235,41 @@ class _SignUpState extends State<SignUp> {
                               ),
                             ),
                           ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Container(
+                            width: width - width * 0.08,
+                            child: Center(
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: 'Already have an account? ',
+                                      style: TextStyle(
+                                        fontSize: height * 0.02,
+                                        color: Colors.grey[700],
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: 'Sign In',
+                                      recognizer: new TapGestureRecognizer()
+                                        ..onTap = () {
+                                          Navigator.pop(context);
+                                        },
+                                      style: TextStyle(
+                                          fontSize: height * 0.02,
+                                          color: Colors.blue,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          )
                         ],
                       ),
                     ),
