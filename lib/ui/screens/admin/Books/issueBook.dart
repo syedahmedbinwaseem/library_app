@@ -105,29 +105,31 @@ class _IssueBookState extends State<IssueBook> {
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.grey.withOpacity(0.2),
                             ),
-                            child: TextField(
-                              textCapitalization: TextCapitalization.none,
-                              controller: searchItems,
-                              style: TextStyle(fontFamily: 'Sofia'),
-                              decoration: InputDecoration(
-                                  suffixIcon: IconButton(
-                                    icon: Icon(
-                                      Icons.clear,
-                                      size: 18,
+                            child: Center(
+                              child: TextField(
+                                textCapitalization: TextCapitalization.none,
+                                controller: searchItems,
+                                style: TextStyle(fontFamily: 'Sofia'),
+                                decoration: InputDecoration(
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        Icons.clear,
+                                        size: 18,
+                                      ),
+                                      onPressed: () {
+                                        searchItems.clear();
+                                      },
                                     ),
-                                    onPressed: () {
-                                      searchItems.clear();
-                                    },
-                                  ),
-                                  contentPadding: EdgeInsets.only(top: 17),
-                                  prefixIcon: Icon(Icons.search),
-                                  border: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                  hintText: 'Search',
-                                  hintStyle: TextStyle(fontFamily: 'Sofia')),
+                                    contentPadding: EdgeInsets.only(top: 17),
+                                    prefixIcon: Icon(Icons.search),
+                                    border: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    enabledBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    disabledBorder: InputBorder.none,
+                                    hintText: 'Search',
+                                    hintStyle: TextStyle(fontFamily: 'Sofia')),
+                              ),
                             ),
                           ),
                           SizedBox(height: 10),

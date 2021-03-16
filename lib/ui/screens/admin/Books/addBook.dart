@@ -14,7 +14,7 @@ class _AddBookState extends State<AddBook> {
   final quantity = TextEditingController();
   GlobalKey<FormState> fKey = GlobalKey<FormState>();
   bool isLoading = false;
-  bool available = true;
+
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
@@ -86,26 +86,6 @@ class _AddBookState extends State<AddBook> {
                               fontFamily: 'Sofia',
                               fontSize: 15),
                         )),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          available = !available;
-                        });
-                      },
-                      child: Row(
-                        children: [
-                          Checkbox(
-                            value: available,
-                            onChanged: (value) {
-                              setState(() {
-                                available = !available;
-                              });
-                            },
-                          ),
-                          Text('Available')
-                        ],
-                      ),
-                    ),
                     SizedBox(height: 10),
                     Container(
                       height: 40,
@@ -136,13 +116,13 @@ class _AddBookState extends State<AddBook> {
                                 await FirebaseFirestore.instance
                                     .collection('books')
                                     .doc()
-                                    .set({
-                                  'name': name.text,
-                                  'author': author.text,
-                                  'added_on': Timestamp.now(),
-                                  'issued': [],
-                                  'available': available
-                                });
+                                    .set(
+                                  {
+                                    'name': name.text,
+                                    'author': author.text,
+                                    'added_on': Timestamp.now(),
+                                  },
+                                );
 
                                 Navigator.pop(context);
                                 setState(() {

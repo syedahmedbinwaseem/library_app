@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:library_app/ui/screens/admin/admDashboard.dart';
 import 'package:library_app/ui/screens/admin/adminDashboard.dart';
 import 'package:library_app/ui/screens/signUp.dart';
 import 'package:library_app/ui/screens/user/dashboard.dart';
@@ -100,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   });
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => AdminDashboard()),
+                      MaterialPageRoute(builder: (context) => AdDashboard()),
                       (route) => false);
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'user-not-found') {
