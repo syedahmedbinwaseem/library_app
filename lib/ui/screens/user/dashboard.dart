@@ -11,7 +11,7 @@ class _UserDashboardState extends State<UserDashboard> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Dashboard',
+          'User Dashboard',
         ),
       ),
       drawer: Drawer(),
