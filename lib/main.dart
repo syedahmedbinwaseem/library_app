@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:library_app/splash.dart';
-import 'package:library_app/ui/screens/login.dart';
 
 void main() {
   runApp(MyApp());
