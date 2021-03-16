@@ -56,9 +56,11 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 Positioned(
-                  top: height * 0.025,
+                  top: height * 0.03,
                   left: width * 0.04,
                   child: IconButton(
+                      splashColor: Colors.black12,
+                      iconSize: 30,
                       icon: Icon(
                         Icons.arrow_back,
                         color: Colors.white,
