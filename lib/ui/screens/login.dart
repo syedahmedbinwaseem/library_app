@@ -9,6 +9,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  GlobalKey<FormState> fKey = GlobalKey<FormState>();
+
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -74,6 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: Form(
+                    key: fKey,
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,6 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: 5,
                           ),
                           TextFormField(
+                            controller: email,
                             textInputAction: TextInputAction.next,
                             decoration: InputDecoration(
                               hintText: 'Enter Username or email',
@@ -138,6 +144,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: 5,
                           ),
                           TextFormField(
+                            controller: password,
+                            textInputAction: TextInputAction.done,
+                            obscureText: true,
                             decoration: InputDecoration(
                               hintText: 'Enter Password',
                               hintStyle: TextStyle(

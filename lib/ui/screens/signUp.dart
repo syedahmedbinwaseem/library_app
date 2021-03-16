@@ -6,6 +6,10 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  GlobalKey<FormState> fKey = GlobalKey<FormState>();
+  TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -83,6 +87,7 @@ class _SignUpState extends State<SignUp> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: Form(
+                    key: fKey,
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,6 +116,7 @@ class _SignUpState extends State<SignUp> {
                             height: 5,
                           ),
                           TextFormField(
+                            controller: name,
                             textInputAction: TextInputAction.next,
                             decoration: InputDecoration(
                               hintText: 'Enter Name',
@@ -140,6 +146,7 @@ class _SignUpState extends State<SignUp> {
                             height: 5,
                           ),
                           TextFormField(
+                            controller: email,
                             textInputAction: TextInputAction.next,
                             decoration: InputDecoration(
                               hintText: 'Enter Username or email',
@@ -169,6 +176,7 @@ class _SignUpState extends State<SignUp> {
                             height: 5,
                           ),
                           TextFormField(
+                            controller: password,
                             decoration: InputDecoration(
                               hintText: 'Enter Password',
                               hintStyle: TextStyle(
@@ -184,18 +192,7 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            'Fogot Password?',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30,
+                            height: 40,
                           ),
                           FlatButton(
                             onPressed: () {},
