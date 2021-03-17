@@ -29,12 +29,18 @@ class _IssuedBooksState extends State<IssuedBooks> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Issued Books'),
+          title: Text(
+            'Issued Books',
+            style: TextStyle(fontFamily: 'Sofia', fontSize: 22),
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.all(10),
           child: StreamBuilder(
-            stream: FirebaseFirestore.instance.collection('books').snapshots(),
+            stream: FirebaseFirestore.instance
+                .collection('books')
+                .where('issued', isNotEqualTo: '')
+                .snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               return !snapshot.hasData
                   ? Container(
@@ -77,14 +83,19 @@ class _IssuedBooksState extends State<IssuedBooks> {
                         ),
                         SizedBox(height: 10),
                         Expanded(
-                          child: ListView.builder(
-                              itemCount: snapshot.data.docs.length,
-                              itemBuilder: (context, index) {
-                                return snapshot.data.docs[index]['issued']
-                                            .length ==
-                                        0
-                                    ? Container()
-                                    : snapshot.data.docs[index]['name']
+                          child: snapshot.data.docs.length == 0
+                              ? Center(
+                                  child: Text(
+                                  'No books issued',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontFamily: 'Sofia',
+                                  ),
+                                ))
+                              : ListView.builder(
+                                  itemCount: snapshot.data.docs.length,
+                                  itemBuilder: (context, index) {
+                                    return snapshot.data.docs[index]['name']
                                                 .toString()
                                                 .toLowerCase()
                                                 .contains(
@@ -96,6 +107,7 @@ class _IssuedBooksState extends State<IssuedBooks> {
                                         ? Padding(
                                             padding: EdgeInsets.fromLTRB(
                                                 0, 10, 0, 10),
+                                            // ignore: deprecated_member_use
                                             child: FlatButton(
                                               onPressed: () {
                                                 Navigator.push(
@@ -115,14 +127,17 @@ class _IssuedBooksState extends State<IssuedBooks> {
                                                       BorderRadius.circular(
                                                           10)),
                                               child: Container(
-                                                height: 100,
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                height: 120,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                   color: Colors.blueAccent
                                                       .withOpacity(0.4),
                                                 ),
-                                                padding: EdgeInsets.all(10),
+                                                padding: EdgeInsets.all(20),
                                                 child: Column(
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
@@ -131,41 +146,37 @@ class _IssuedBooksState extends State<IssuedBooks> {
                                                       snapshot.data.docs[index]
                                                           ['name'],
                                                       style: TextStyle(
+                                                          fontFamily: 'Sofia',
                                                           fontSize: 30,
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),
+                                                    SizedBox(height: 8),
                                                     Text(
                                                       snapshot.data.docs[index]
                                                           ['author'],
                                                       style: TextStyle(
+                                                          fontFamily: 'Sofia',
                                                           fontSize: 20,
                                                           fontWeight: FontWeight
                                                               .normal),
                                                     ),
-                                                    Expanded(
-                                                        child: Align(
-                                                            alignment: Alignment
-                                                                .bottomRight,
-                                                            child: Text(
-                                                              snapshot.data.docs[
-                                                                              index]
-                                                                          [
-                                                                          'available'] ==
-                                                                      true
-                                                                  ? 'Available'
-                                                                  : 'Not Available',
-                                                              style: TextStyle(
-                                                                fontSize: 16,
-                                                              ),
-                                                            )))
+                                                    SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    Text(
+                                                      'Issued To: \n${snapshot.data.docs[index]['issued']}',
+                                                      style: TextStyle(
+                                                        fontFamily: 'Sofia',
+                                                      ),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
                                             ),
                                           )
                                         : Container();
-                              }),
+                                  }),
                         ),
                       ],
                     );

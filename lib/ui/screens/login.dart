@@ -4,7 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:library_app/ui/screens/admin/admDashboard.dart';
-import 'package:library_app/ui/screens/admin/adminDashboard.dart';
 import 'package:library_app/ui/screens/signUp.dart';
 import 'package:library_app/ui/screens/user/dashboard.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -222,6 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Sign In',
                       style: TextStyle(
+                        fontFamily: 'Sofia',
                         fontSize: 30,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -255,13 +255,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             Text(
                               'Welcome',
                               style: TextStyle(
+                                fontFamily: 'Sofia',
                                 fontSize: 26,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
-                              'Hello there, signin to continue!',
+                              'Hello there, Signin to continue!',
                               style: TextStyle(
+                                fontFamily: 'Sofia',
                                 fontSize: 16,
                                 color: Colors.black54,
                               ),
@@ -272,6 +274,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Text(
                               'Username or email',
                               style: TextStyle(
+                                fontFamily: 'Sofia',
                                 fontSize: 14,
                                 color: Colors.black38,
                               ),
@@ -292,6 +295,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               decoration: InputDecoration(
                                 hintText: 'Enter Username or email',
                                 hintStyle: TextStyle(
+                                  fontFamily: 'Sofia',
                                   fontSize: 14,
                                   color: Colors.black38,
                                 ),
@@ -309,6 +313,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Text(
                               'Password',
                               style: TextStyle(
+                                fontFamily: 'Sofia',
                                 fontSize: 14,
                                 color: Colors.black38,
                               ),
@@ -329,6 +334,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   decoration: InputDecoration(
                                     hintText: 'Enter Password',
                                     hintStyle: TextStyle(
+                                      fontFamily: 'Sofia',
                                       fontSize: 14,
                                       color: Colors.black38,
                                     ),
@@ -359,6 +365,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Text(
                               'Fogot Password?',
                               style: TextStyle(
+                                fontFamily: 'Sofia',
                                 fontSize: 16,
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold,
@@ -367,6 +374,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             SizedBox(
                               height: 30,
                             ),
+                            // ignore: deprecated_member_use
                             FlatButton(
                               onPressed: () {
                                 if (fKey.currentState.validate()) {
@@ -383,6 +391,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Text(
                                   'Sign In',
                                   style: TextStyle(
+                                      fontFamily: 'Sofia',
                                       fontSize: 18,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
@@ -401,6 +410,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       TextSpan(
                                         text: 'Don\'t have an account? ',
                                         style: TextStyle(
+                                          fontFamily: 'Sofia',
                                           fontSize: height * 0.02,
                                           color: Colors.grey[700],
                                         ),
@@ -415,6 +425,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                         SignUp()));
                                           },
                                         style: TextStyle(
+                                            fontFamily: 'Sofia',
                                             fontSize: height * 0.02,
                                             color: Colors.blue,
                                             fontWeight: FontWeight.bold),

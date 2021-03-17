@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class AddBook extends StatefulWidget {
@@ -50,6 +49,7 @@ class _AddBookState extends State<AddBook> {
                         controller: name,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.text,
+                        textCapitalization: TextCapitalization.words,
                         cursorColor: Colors.grey[700],
                         decoration: InputDecoration(
                           errorStyle: TextStyle(
@@ -71,7 +71,8 @@ class _AddBookState extends State<AddBook> {
                         },
                         style: TextStyle(fontFamily: 'Sofia'),
                         controller: author,
-                        textInputAction: TextInputAction.next,
+                        textInputAction: TextInputAction.done,
+                        textCapitalization: TextCapitalization.words,
                         cursorColor: Colors.grey[700],
                         decoration: InputDecoration(
                           errorStyle: TextStyle(
@@ -93,6 +94,7 @@ class _AddBookState extends State<AddBook> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
+                          // ignore: deprecated_member_use
                           FlatButton(
                             minWidth: 40,
                             onPressed: () {
@@ -104,6 +106,7 @@ class _AddBookState extends State<AddBook> {
                                     fontFamily: "Sofia",
                                     fontWeight: FontWeight.bold)),
                           ),
+                          // ignore: deprecated_member_use
                           FlatButton(
                             minWidth: 40,
                             onPressed: () async {
@@ -121,6 +124,9 @@ class _AddBookState extends State<AddBook> {
                                     'name': name.text,
                                     'author': author.text,
                                     'added_on': Timestamp.now(),
+                                    'issued': '',
+                                    'issued_on': null,
+                                    'return_on': null
                                   },
                                 );
 

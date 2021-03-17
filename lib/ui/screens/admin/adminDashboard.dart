@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:library_app/ui/screens/admin/Books/addBook.dart';
 import 'package:library_app/ui/screens/admin/Books/bookDetails.dart';
 import 'package:library_app/ui/screens/admin/Books/deleteBook.dart';
@@ -22,7 +21,6 @@ class _AdminDashboardState extends State<AdminDashboard> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     searchItems.addListener(() {
       setState(() {
@@ -46,14 +44,14 @@ class _AdminDashboardState extends State<AdminDashboard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Spacer(),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'All Books',
                     style: TextStyle(fontSize: 24),
                   ),
                   onPressed: () {},
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'Issued Books',
                     style: TextStyle(fontSize: 24),
@@ -63,7 +61,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         MaterialPageRoute(builder: (context) => IssuedBooks()));
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'Manage Users',
                     style: TextStyle(fontSize: 24),
@@ -73,7 +71,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         MaterialPageRoute(builder: (context) => Users()));
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text(
                     'Generate Fines',
                     style: TextStyle(fontSize: 24),
@@ -85,7 +83,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                     alignment: Alignment.bottomCenter,
                     child: Container(
                       height: 40,
-                      child: FlatButton(
+                      child: TextButton(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -302,6 +300,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                           child: Padding(
                                             padding: EdgeInsets.fromLTRB(
                                                 0, 10, 0, 10),
+                                            // ignore: deprecated_member_use
                                             child: FlatButton(
                                               onPressed: () {
                                                 Navigator.push(

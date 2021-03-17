@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 // ignore: must_be_immutable
-class DeleteBook extends StatefulWidget {
-  String docId;
-
-  DeleteBook({this.docId});
+class PayFine extends StatefulWidget {
+  DocumentSnapshot books;
+  PayFine({this.books});
   @override
-  _DeleteBookState createState() => _DeleteBookState();
+  _PayFineState createState() => _PayFineState();
 }
 
-class _DeleteBookState extends State<DeleteBook> {
+class _PayFineState extends State<PayFine> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -29,13 +28,13 @@ class _DeleteBookState extends State<DeleteBook> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Warning',
+                  'Continue!',
                   style: TextStyle(
-                      color: Colors.red, fontSize: 20, fontFamily: 'Sofia'),
+                      color: Colors.green, fontSize: 20, fontFamily: 'Sofia'),
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Are you sure you want to delete the book?',
+                  'Are you sure you want the user has paid the fine?',
                   style: TextStyle(
                       color: Colors.black, fontSize: 15, fontFamily: 'Sofia'),
                 ),
@@ -69,9 +68,20 @@ class _DeleteBookState extends State<DeleteBook> {
 
                             await FirebaseFirestore.instance
                                 .collection('books')
-                                .doc(widget.docId)
-                                .delete();
+                                .doc(widget.books.id)
+                                .update({
+                              'fine': null,
+                              'issued': '',
+                              'issued_on': null,
+                              'return_on': null
+                            });
 
+                            await FirebaseFirestore.instance
+                                .collection('user')
+                                .doc(widget.books['issued'])
+                                .collection('fine')
+                                .doc(widget.books['fineID'])
+                                .delete();
                             Navigator.pop(context);
                             setState(() {
                               isLoading = false;
@@ -82,7 +92,7 @@ class _DeleteBookState extends State<DeleteBook> {
                             style: TextStyle(
                                 fontFamily: 'Sofia',
                                 fontWeight: FontWeight.bold,
-                                color: Colors.red),
+                                color: Colors.green),
                           ),
                         )
                       ],

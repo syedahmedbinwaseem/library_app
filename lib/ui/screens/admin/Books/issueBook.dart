@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+// ignore: must_be_immutable
 class IssueBook extends StatefulWidget {
   String docId;
 
@@ -30,7 +31,6 @@ class _IssueBookState extends State<IssueBook> {
 
     snap.docs.forEach((element) {
       if (abc['issued'].toString().contains(element['email'])) {
-        // print(element['email']);
         setState(() {
           values[element['email']] = true;
         });
@@ -44,7 +44,6 @@ class _IssueBookState extends State<IssueBook> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getData();
     searchItems.addListener(() {
@@ -148,6 +147,13 @@ class _IssueBookState extends State<IssueBook> {
                                   title: new Text(key),
                                   value: values[key],
                                   onChanged: (bool value) {
+                                    values.forEach((key, value) {
+                                      setState(() {
+                                        values[key] = false;
+                                      });
+                                    });
+                                    // values[key] = false;
+
                                     setState(() {
                                       values[key] = value;
                                     });
@@ -196,6 +202,7 @@ class _IssueBookState extends State<IssueBook> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
+                                // ignore: deprecated_member_use
                                 FlatButton(
                                   minWidth: 40,
                                   onPressed: () {
@@ -207,24 +214,37 @@ class _IssueBookState extends State<IssueBook> {
                                           fontFamily: "Sofia",
                                           fontWeight: FontWeight.bold)),
                                 ),
+                                // ignore: deprecated_member_use
                                 FlatButton(
                                   minWidth: 40,
                                   onPressed: () async {
                                     setState(() {
                                       isLoading = true;
                                     });
+                                    String email = '';
                                     FocusScope.of(context).unfocus();
                                     List<String> array = [];
                                     values.forEach((key, value) {
                                       if (value == false) {
                                       } else if (value == true) {
                                         array.add(key);
+                                        email = key;
                                       }
                                     });
+                                    print(array);
                                     await FirebaseFirestore.instance
                                         .collection('books')
                                         .doc(widget.docId)
-                                        .update({'issued': array});
+                                        .update({
+                                      'issued': email,
+                                      'issued_on': array.length == 0
+                                          ? null
+                                          : DateTime.now(),
+                                      'return_on': array.length == 0
+                                          ? null
+                                          : DateTime.now()
+                                              .add(Duration(days: 14))
+                                    });
 
                                     // if (fKey.currentState.validate()) {
                                     //   setState(() {

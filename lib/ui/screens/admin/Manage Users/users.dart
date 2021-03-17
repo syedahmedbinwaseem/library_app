@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:library_app/ui/screens/admin/Manage%20Users/addUser.dart';
 import 'package:library_app/ui/screens/admin/Manage%20Users/deleteUser.dart';
 
 class Users extends StatefulWidget {
@@ -18,7 +19,6 @@ class _UsersState extends State<Users> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     searchItems.addListener(() {
       setState(() {
@@ -35,7 +35,10 @@ class _UsersState extends State<Users> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Users'),
+          title: Text(
+            'Users',
+            style: TextStyle(fontFamily: 'Sofia', fontSize: 22),
+          ),
         ),
         floatingActionButton: addUser(),
         body: Padding(
@@ -141,6 +144,7 @@ class _UsersState extends State<Users> {
                                       child: Padding(
                                         padding:
                                             EdgeInsets.fromLTRB(0, 10, 0, 10),
+                                        // ignore: deprecated_member_use
                                         child: FlatButton(
                                           onPressed: () {
                                             print('as');
@@ -162,7 +166,10 @@ class _UsersState extends State<Users> {
                                               child: Text(
                                                 snapshot.data.docs[index]
                                                     ['email'],
-                                                style: TextStyle(fontSize: 18),
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontFamily: 'Sofia',
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -185,7 +192,13 @@ class _UsersState extends State<Users> {
 
   addUser() {
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: () {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AddUser();
+            });
+      },
       child: Center(
         child: Icon(Icons.add),
       ),

@@ -3,27 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 // ignore: must_be_immutable
-class EditBook extends StatefulWidget {
+class GenerateFine extends StatefulWidget {
   DocumentSnapshot book;
-
-  EditBook({this.book});
+  GenerateFine({this.book});
   @override
-  _EditBookState createState() => _EditBookState();
+  _GenerateFineState createState() => _GenerateFineState();
 }
 
-class _EditBookState extends State<EditBook> {
-  final name = TextEditingController();
-  final author = TextEditingController();
+class _GenerateFineState extends State<GenerateFine> {
+  final amount = TextEditingController();
   GlobalKey<FormState> fKey = GlobalKey<FormState>();
   bool isLoading = false;
-
-  @override
-  void initState() {
-    super.initState();
-    name.text = widget.book['name'];
-    author.text = widget.book['author'];
-  }
-
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
@@ -44,7 +34,7 @@ class _EditBookState extends State<EditBook> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Add Book',
+                      'Generate Fine',
                       style: TextStyle(
                           fontFamily: 'Sofia',
                           fontWeight: FontWeight.bold,
@@ -56,40 +46,16 @@ class _EditBookState extends State<EditBook> {
                           return input.isEmpty ? 'Cannot be empty' : null;
                         },
                         style: TextStyle(fontFamily: 'Sofia'),
-                        controller: name,
+                        controller: amount,
                         textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.text,
+                        keyboardType: TextInputType.number,
                         cursorColor: Colors.grey[700],
                         decoration: InputDecoration(
                           errorStyle: TextStyle(
                               fontFamily: 'Sofia',
                               color: Colors.red,
                               fontSize: 14),
-                          // disabledBorder: UnderlineInputBorder(
-                          //     borderSide: BorderSide(color: primaryGreen)),
-                          labelText: 'Book Name',
-                          labelStyle: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Sofia',
-                              fontSize: 15),
-                        )),
-                    TextFormField(
-                        keyboardType: TextInputType.text,
-                        validator: (input) {
-                          return input.isEmpty ? 'Cannot be empty' : null;
-                        },
-                        style: TextStyle(fontFamily: 'Sofia'),
-                        controller: author,
-                        textInputAction: TextInputAction.next,
-                        cursorColor: Colors.grey[700],
-                        decoration: InputDecoration(
-                          errorStyle: TextStyle(
-                              fontFamily: 'Sofia',
-                              color: Colors.red,
-                              fontSize: 14),
-                          // disabledBorder: UnderlineInputBorder(
-                          //     borderSide: BorderSide(color: primaryGreen)),
-                          labelText: 'Author Name',
+                          labelText: 'Fine Amount',
                           labelStyle: TextStyle(
                               color: Colors.black,
                               fontFamily: 'Sofia',
@@ -106,7 +72,7 @@ class _EditBookState extends State<EditBook> {
                           FlatButton(
                             minWidth: 40,
                             onPressed: () {
-                              name.clear();
+                              amount.clear();
                               Navigator.pop(context);
                             },
                             child: Text('Cancel',
@@ -123,21 +89,32 @@ class _EditBookState extends State<EditBook> {
                                 setState(() {
                                   isLoading = true;
                                 });
-
+                                DocumentReference ref = FirebaseFirestore
+                                    .instance
+                                    .collection('user')
+                                    .doc(widget.book['issued'])
+                                    .collection('fine')
+                                    .doc();
+                                ref.set({
+                                  'bookName': widget.book['name'],
+                                  'fineGeneratedOn': DateTime.now(),
+                                  'fineAmount': int.parse(amount.text),
+                                });
                                 await FirebaseFirestore.instance
                                     .collection('books')
                                     .doc(widget.book.id)
                                     .update({
-                                  'name': name.text,
-                                  'author': author.text,
+                                  'fine': int.parse(amount.text),
+                                  'fineID': ref.id
                                 });
+
                                 Navigator.pop(context);
                                 setState(() {
                                   isLoading = false;
                                 });
                               }
                             },
-                            child: Text('Save',
+                            child: Text('Generate',
                                 style: TextStyle(
                                     fontFamily: "Sofia",
                                     fontWeight: FontWeight.bold,

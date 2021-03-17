@@ -163,6 +163,7 @@ class _SignUpState extends State<SignUp> {
                     child: Text(
                       'Sign Up',
                       style: TextStyle(
+                        fontFamily: 'Sofia',
                         fontSize: 30,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -196,6 +197,7 @@ class _SignUpState extends State<SignUp> {
                             Text(
                               'Create an account',
                               style: TextStyle(
+                                fontFamily: 'Sofia',
                                 fontSize: 26,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -206,6 +208,7 @@ class _SignUpState extends State<SignUp> {
                             Text(
                               'Name',
                               style: TextStyle(
+                                fontFamily: 'Sofia',
                                 fontSize: 14,
                                 color: Colors.black38,
                               ),
@@ -239,6 +242,7 @@ class _SignUpState extends State<SignUp> {
                             Text(
                               'Username or email',
                               style: TextStyle(
+                                fontFamily: 'Sofia',
                                 fontSize: 14,
                                 color: Colors.black38,
                               ),
@@ -276,6 +280,7 @@ class _SignUpState extends State<SignUp> {
                             Text(
                               'Password',
                               style: TextStyle(
+                                fontFamily: 'Sofia',
                                 fontSize: 14,
                                 color: Colors.black38,
                               ),
@@ -323,6 +328,7 @@ class _SignUpState extends State<SignUp> {
                             SizedBox(
                               height: 40,
                             ),
+                            // ignore: deprecated_member_use
                             FlatButton(
                               onPressed: () {
                                 if (fKey.currentState.validate()) {
@@ -339,6 +345,7 @@ class _SignUpState extends State<SignUp> {
                                 child: Text(
                                   'Sign Up',
                                   style: TextStyle(
+                                      fontFamily: 'Sofia',
                                       fontSize: 18,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
@@ -357,6 +364,7 @@ class _SignUpState extends State<SignUp> {
                                       TextSpan(
                                         text: 'Already have an account? ',
                                         style: TextStyle(
+                                          fontFamily: 'Sofia',
                                           fontSize: height * 0.02,
                                           color: Colors.grey[700],
                                         ),

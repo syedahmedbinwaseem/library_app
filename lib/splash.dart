@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:library_app/ui/screens/admin/adminDashboard.dart';
+import 'package:library_app/ui/screens/admin/admDashboard.dart';
 import 'package:library_app/ui/screens/login.dart';
 import 'package:library_app/ui/screens/user/dashboard.dart';
 
@@ -34,8 +34,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     .get()
                     .then((doc) {
                   if (doc.exists) {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => AdminDashboard()));
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => AdDashboard()));
                   } else {
                     Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (context) => LoginScreen()));
@@ -51,7 +51,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getUser();
   }
@@ -74,12 +73,14 @@ class _SplashScreenState extends State<SplashScreen> {
               SizedBox(height: 30),
               Text(
                 'InfyLMS',
-                style: TextStyle(fontSize: 40, color: Colors.blue),
+                style: TextStyle(
+                    fontSize: 40, color: Colors.blue, fontFamily: 'Sofia'),
               ),
               SizedBox(height: 5),
               Text(
                 'POWERFUL LIBRARY MANAGEMENT',
-                style: TextStyle(fontSize: 15, color: Colors.blue),
+                style: TextStyle(
+                    fontSize: 15, color: Colors.blue, fontFamily: 'Sofia'),
               )
             ],
           ),
