@@ -44,7 +44,7 @@ class _EditBookState extends State<EditBook> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Add Book',
+                      'Edit Book',
                       style: TextStyle(
                           fontFamily: 'Sofia',
                           fontWeight: FontWeight.bold,
