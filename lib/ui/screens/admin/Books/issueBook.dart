@@ -144,7 +144,10 @@ class _IssueBookState extends State<IssueBook> {
                                 return element.contains(searchItems.text);
                               }).map((String key) {
                                 return new CheckboxListTile(
-                                  title: new Text(key),
+                                  title: new Text(
+                                    key,
+                                    style: TextStyle(fontFamily: 'Sofia'),
+                                  ),
                                   value: values[key],
                                   onChanged: (bool value) {
                                     values.forEach((key, value) {

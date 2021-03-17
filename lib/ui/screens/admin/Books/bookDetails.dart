@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:library_app/ui/screens/admin/Books/editBook.dart';
 import 'package:library_app/ui/screens/admin/Books/issueBook.dart';
 import 'package:library_app/ui/screens/admin/Books/returnedBook.dart';
+import 'package:library_app/ui/screens/admin/Fines/generateFine.dart';
 
 // ignore: must_be_immutable
 class BookDetails extends StatefulWidget {
@@ -238,7 +239,7 @@ class _BookDetailsState extends State<BookDetails> {
                                                 ),
                                                 child: SlideAction(
                                                   onTap: () {
-                                                    returnedBook(
+                                                    generateFine(
                                                         snapshot.data.id);
                                                   },
                                                   child: Container(
@@ -472,6 +473,17 @@ class _BookDetailsState extends State<BookDetails> {
         context: context,
         builder: (context) {
           return EditBook(book: docId);
+        });
+  }
+
+  generateFine(DocumentSnapshot book) {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return GenerateFine(
+            book: book,
+          );
         });
   }
 

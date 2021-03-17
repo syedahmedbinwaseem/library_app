@@ -283,6 +283,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               height: 5,
                             ),
                             TextFormField(
+                              style: TextStyle(fontFamily: 'Sofia'),
                               validator: (value) {
                                 return value.isEmpty
                                     ? 'Enter email'
@@ -324,6 +325,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Stack(
                               children: [
                                 TextFormField(
+                                  style: TextStyle(fontFamily: 'Sofia'),
                                   validator: (value) {
                                     return value.isEmpty
                                         ? ' Enter password'

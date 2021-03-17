@@ -73,7 +73,8 @@ class _PayFineState extends State<PayFine> {
                               'fine': null,
                               'issued': '',
                               'issued_on': null,
-                              'return_on': null
+                              'return_on': null,
+                              'fineID': null
                             });
 
                             await FirebaseFirestore.instance

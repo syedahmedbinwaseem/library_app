@@ -217,6 +217,7 @@ class _SignUpState extends State<SignUp> {
                               height: 5,
                             ),
                             TextFormField(
+                              style: TextStyle(fontFamily: 'Sofia'),
                               controller: name,
                               textInputAction: TextInputAction.next,
                               validator: (value) {
@@ -251,6 +252,7 @@ class _SignUpState extends State<SignUp> {
                               height: 5,
                             ),
                             TextFormField(
+                              style: TextStyle(fontFamily: 'Sofia'),
                               controller: email,
                               textInputAction: TextInputAction.next,
                               validator: (value) {
@@ -291,6 +293,7 @@ class _SignUpState extends State<SignUp> {
                             Stack(
                               children: [
                                 TextFormField(
+                                  style: TextStyle(fontFamily: 'Sofia'),
                                   controller: password,
                                   obscureText: showPass,
                                   validator: (value) {

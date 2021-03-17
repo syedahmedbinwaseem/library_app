@@ -73,7 +73,9 @@ class _ReturnedBookState extends State<ReturnedBook> {
                                 .update({
                               'issued': '',
                               'issued_on': null,
-                              'return_on': null
+                              'return_on': null,
+                              'fine': null,
+                              'fineID': null
                             });
 
                             Navigator.pop(context);
