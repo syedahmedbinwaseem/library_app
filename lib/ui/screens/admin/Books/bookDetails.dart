@@ -239,8 +239,7 @@ class _BookDetailsState extends State<BookDetails> {
                                                 ),
                                                 child: SlideAction(
                                                   onTap: () {
-                                                    generateFine(
-                                                        snapshot.data.id);
+                                                    generateFine(snapshot.data);
                                                   },
                                                   child: Container(
                                                     width:
