@@ -120,8 +120,14 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                               padding: const EdgeInsets.only(
                                                   left: 8),
                                               child: Container(
-                                                height: 100,
-                                                width: 100,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.35,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.35,
                                                 child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.only(
@@ -166,8 +172,14 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                               padding: const EdgeInsets.only(
                                                   right: 8.0),
                                               child: Container(
-                                                height: 100,
-                                                width: 100,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.35,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.35,
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.only(
@@ -236,7 +248,14 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                                       BorderRadius.circular(
                                                           10)),
                                               child: Container(
-                                                height: 100,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.35,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.9,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -245,6 +264,9 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                                 ),
                                                 padding: EdgeInsets.all(20),
                                                 child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
@@ -253,32 +275,26 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                                           ['name'],
                                                       style: TextStyle(
                                                           fontFamily: 'Sofia',
-                                                          fontSize: 30,
+                                                          fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.07,
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),
-                                                    SizedBox(height: 5),
+                                                    SizedBox(height: 8),
                                                     Text(
-                                                      snapshot.data.docs[index]
-                                                          ['author'],
+                                                      'By ' +
+                                                          snapshot.data
+                                                                  .docs[index]
+                                                              ['author'],
                                                       style: TextStyle(
                                                           fontFamily: 'Sofia',
                                                           fontSize: 20,
                                                           fontWeight: FontWeight
                                                               .normal),
                                                     ),
-                                                    Expanded(
-                                                        child: Align(
-                                                            alignment: Alignment
-                                                                .bottomRight,
-                                                            child: Text(
-                                                              'Available',
-                                                              style: TextStyle(
-                                                                fontFamily:
-                                                                    'Sofia',
-                                                                fontSize: 16,
-                                                              ),
-                                                            )))
                                                   ],
                                                 ),
                                               ),

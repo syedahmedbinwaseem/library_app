@@ -130,7 +130,10 @@ class _IssuedBooksState extends State<IssuedBooks> {
                                                 width: MediaQuery.of(context)
                                                     .size
                                                     .width,
-                                                height: 120,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.45,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -147,14 +150,20 @@ class _IssuedBooksState extends State<IssuedBooks> {
                                                           ['name'],
                                                       style: TextStyle(
                                                           fontFamily: 'Sofia',
-                                                          fontSize: 30,
+                                                          fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.07,
                                                           fontWeight:
                                                               FontWeight.bold),
                                                     ),
                                                     SizedBox(height: 8),
                                                     Text(
-                                                      snapshot.data.docs[index]
-                                                          ['author'],
+                                                      'By ' +
+                                                          snapshot.data
+                                                                  .docs[index]
+                                                              ['author'],
                                                       style: TextStyle(
                                                           fontFamily: 'Sofia',
                                                           fontSize: 20,
@@ -164,10 +173,15 @@ class _IssuedBooksState extends State<IssuedBooks> {
                                                     SizedBox(
                                                       height: 5,
                                                     ),
-                                                    Text(
-                                                      'Issued To: \n${snapshot.data.docs[index]['issued']}',
-                                                      style: TextStyle(
-                                                        fontFamily: 'Sofia',
+                                                    Align(
+                                                      alignment:
+                                                          Alignment.bottomLeft,
+                                                      child: Text(
+                                                        'Issued To: \n${snapshot.data.docs[index]['issued']}',
+                                                        style: TextStyle(
+                                                          fontFamily: 'Sofia',
+                                                          fontSize: 16,
+                                                        ),
                                                       ),
                                                     ),
                                                   ],

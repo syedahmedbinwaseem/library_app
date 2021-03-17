@@ -127,8 +127,16 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                         .only(
                                                                     left: 8),
                                                             child: Container(
-                                                              height: 190,
-                                                              width: 190,
+                                                              height: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.8,
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.8,
                                                               child: ClipRRect(
                                                                   borderRadius:
                                                                       BorderRadius
@@ -176,8 +184,16 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                         .only(
                                                                     left: 8),
                                                             child: Container(
-                                                              height: 190,
-                                                              width: 190,
+                                                              height: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.8,
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.8,
                                                               child: ClipRRect(
                                                                   borderRadius:
                                                                       BorderRadius
@@ -218,6 +234,7 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                               height: 2),
                                                                           Text(
                                                                               'Returned',
+                                                                              textAlign: TextAlign.center,
                                                                               style: TextStyle(fontFamily: 'Sofia', color: Colors.white)),
                                                                         ],
                                                                       ),
@@ -231,8 +248,16 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                         .only(
                                                                     left: 0),
                                                             child: Container(
-                                                              height: 190,
-                                                              width: 190,
+                                                              height: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.8,
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.8,
                                                               child: ClipRRect(
                                                                   borderRadius:
                                                                       BorderRadius
@@ -271,6 +296,7 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                               height: 2),
                                                                           Text(
                                                                               'Generate Fine',
+                                                                              textAlign: TextAlign.center,
                                                                               style: TextStyle(fontFamily: 'Sofia', color: Colors.white)),
                                                                         ],
                                                                       ),
@@ -295,7 +321,11 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                     .circular(
                                                                         10)),
                                                         child: Container(
-                                                          height: 190,
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width *
+                                                              0.8,
                                                           decoration: BoxDecoration(
                                                               borderRadius:
                                                                   BorderRadius
@@ -311,19 +341,21 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                           child: Center(
                                                             child: Column(
                                                               children: [
-                                                                Row(
+                                                                Column(
                                                                   children: [
                                                                     Text(
                                                                       'Book Name:',
-                                                                      style: TextStyle(
-                                                                          fontFamily:
-                                                                              'Sofia',
-                                                                          fontSize:
-                                                                              20),
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontFamily:
+                                                                            'Sofia',
+                                                                        fontSize:
+                                                                            20,
+                                                                      ),
                                                                     ),
                                                                     SizedBox(
-                                                                        width:
-                                                                            30),
+                                                                        height:
+                                                                            10),
                                                                     Text(
                                                                       snapshot
                                                                           .data
@@ -332,7 +364,9 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                           fontFamily:
                                                                               'Sofia',
                                                                           fontSize:
-                                                                              20),
+                                                                              20,
+                                                                          fontWeight:
+                                                                              FontWeight.bold),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -341,7 +375,7 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                 Divider(
                                                                   thickness: 1,
                                                                 ),
-                                                                Row(
+                                                                Column(
                                                                   children: [
                                                                     Text(
                                                                       'Issued To:',
@@ -352,8 +386,8 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                               20),
                                                                     ),
                                                                     SizedBox(
-                                                                        width:
-                                                                            45),
+                                                                        height:
+                                                                            10),
                                                                     Text(
                                                                       snapshot
                                                                           .data

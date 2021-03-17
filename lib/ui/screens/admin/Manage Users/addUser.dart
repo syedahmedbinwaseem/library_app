@@ -51,27 +51,18 @@ class _AddUserState extends State<AddUser> {
             builder: (BuildContext context) {
               return AlertDialog(
                 title: Text(
-                  'User added successfully! Login again to use the app.',
+                  'User added successfully!',
                   style: TextStyle(color: Colors.black, fontFamily: 'Sofia'),
                 ),
                 actions: <Widget>[
                   TextButton(
                     child: Text(
-                      "Continue",
+                      "OK",
                       style:
                           TextStyle(color: Colors.black, fontFamily: 'Sofia'),
                     ),
-                    onPressed: () async {
-                      try {
-                        await FirebaseAuth.instance.signOut();
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginScreen()),
-                            (route) => false);
-                      } catch (e) {
-                        print(e);
-                      }
+                    onPressed: () {
+                      Navigator.pop(context);
                     },
                   ),
                 ],
