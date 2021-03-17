@@ -69,7 +69,6 @@ class _AddUserState extends State<AddUser> {
                             MaterialPageRoute(
                                 builder: (context) => LoginScreen()),
                             (route) => false);
-                        Navigator.pop(context);
                       } catch (e) {
                         print(e);
                       }
