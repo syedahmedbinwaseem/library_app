@@ -116,7 +116,7 @@ class _BookDetailsState extends State<BookDetails> {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            'Issued To:',
+                            'Issue Details:',
                             style: TextStyle(fontFamily: 'Sofia', fontSize: 20),
                           ),
                           SizedBox(height: 20),

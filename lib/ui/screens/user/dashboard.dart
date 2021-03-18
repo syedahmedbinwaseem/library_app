@@ -126,7 +126,14 @@ class _UserDashboardState extends State<UserDashboard> {
                                                 borderRadius:
                                                     BorderRadius.circular(10)),
                                             child: Container(
-                                              height: 100,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.35,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.9,
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
@@ -135,6 +142,9 @@ class _UserDashboardState extends State<UserDashboard> {
                                               ),
                                               padding: EdgeInsets.all(20),
                                               child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
@@ -143,32 +153,26 @@ class _UserDashboardState extends State<UserDashboard> {
                                                         ['name'],
                                                     style: TextStyle(
                                                         fontFamily: 'Sofia',
-                                                        fontSize: 30,
+                                                        fontSize: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.07,
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
                                                   SizedBox(height: 5),
                                                   Text(
-                                                    snapshot.data.docs[index]
-                                                        ['author'],
+                                                    'By ' +
+                                                        snapshot.data
+                                                                .docs[index]
+                                                            ['author'],
                                                     style: TextStyle(
                                                         fontFamily: 'Sofia',
                                                         fontSize: 20,
                                                         fontWeight:
                                                             FontWeight.normal),
                                                   ),
-                                                  Expanded(
-                                                      child: Align(
-                                                          alignment: Alignment
-                                                              .bottomRight,
-                                                          child: Text(
-                                                            'Available',
-                                                            style: TextStyle(
-                                                              fontFamily:
-                                                                  'Sofia',
-                                                              fontSize: 16,
-                                                            ),
-                                                          )))
                                                 ],
                                               ),
                                             ),

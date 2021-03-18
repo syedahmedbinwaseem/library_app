@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:library_app/ui/screens/admin/admDashboard.dart';
 import 'package:library_app/ui/screens/signUp.dart';
 import 'package:library_app/ui/screens/user/dashboard.dart';
+import 'package:library_app/ui/screens/user/localUser.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -42,6 +43,19 @@ class _LoginScreenState extends State<LoginScreen> {
             setState(() {
               isLoading = false;
             });
+            if (user != null) {
+              try {
+                DocumentSnapshot snap = await FirebaseFirestore.instance
+                    .collection("user")
+                    .doc(email.text)
+                    .get();
+                LocalUser.userData.name = snap['name'].toString();
+
+                LocalUser.userData.email = snap['email'].toString();
+              } catch (e) {
+                print(e);
+              }
+            }
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => UserDashboard()),
