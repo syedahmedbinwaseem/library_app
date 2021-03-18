@@ -50,7 +50,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     .doc(email.text)
                     .get();
                 LocalUser.userData.name = snap['name'].toString();
-
                 LocalUser.userData.email = snap['email'].toString();
               } catch (e) {
                 print(e);

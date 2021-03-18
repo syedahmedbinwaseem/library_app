@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
-import 'package:library_app/ui/screens/login.dart';
+
 import 'package:library_app/ui/screens/user/issued.dart';
 
 import 'package:library_app/ui/screens/user/localUser.dart';
@@ -16,7 +15,7 @@ class DrawerApp extends StatefulWidget {
 class _DrawerAppState extends State<DrawerApp> {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
+   // var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Drawer(
       child: Column(
@@ -79,6 +78,9 @@ class _DrawerAppState extends State<DrawerApp> {
               },
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
           TextButton(
             child: Row(
               children: [
@@ -99,6 +101,7 @@ class _DrawerAppState extends State<DrawerApp> {
                   .push(MaterialPageRoute(builder: (context) => Profile()));
             },
           ),
+          Divider(),
           TextButton(
             child: Row(
               children: [
@@ -119,6 +122,7 @@ class _DrawerAppState extends State<DrawerApp> {
                   .push(MaterialPageRoute(builder: (context) => Issued()));
             },
           ),
+          Divider(),
           TextButton(
               child: Row(
                 children: [
