@@ -156,20 +156,52 @@ class _UsersState extends State<Users> {
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           child: Container(
-                                            height: 50,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.25,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.9,
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
                                                 color: Colors.blueAccent
                                                     .withOpacity(0.34)),
-                                            child: Center(
-                                              child: Text(
-                                                snapshot.data.docs[index]
-                                                    ['email'],
-                                                style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontFamily: 'Sofia',
-                                                ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10, right: 10),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    snapshot.data.docs[index]
+                                                        ['name'],
+                                                    style: TextStyle(
+                                                      fontSize:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.07,
+                                                      fontFamily: 'Sofia',
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Text(
+                                                    snapshot.data.docs[index]
+                                                        ['email'],
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontFamily: 'Sofia',
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),

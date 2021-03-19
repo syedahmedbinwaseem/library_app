@@ -231,8 +231,7 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                               onPressed: () {
                                                 FocusScope.of(context)
                                                     .unfocus();
-                                                Navigator.push(
-                                                    context,
+                                                Navigator.of(context).push(
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             BookDetails(
