@@ -133,7 +133,7 @@ class _IssuedBooksState extends State<IssuedBooks> {
                                                 height: MediaQuery.of(context)
                                                         .size
                                                         .width *
-                                                    0.45,
+                                                    0.4,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),

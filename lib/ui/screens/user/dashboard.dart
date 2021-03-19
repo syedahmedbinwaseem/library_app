@@ -115,12 +115,13 @@ class _UserDashboardState extends State<UserDashboard> {
                                           // ignore: deprecated_member_use
                                           child: FlatButton(
                                             onPressed: () {
-                                              FocusScope.of(context)
-                                                  .requestFocus();
-                                              FocusScope.of(context)
-                                                  .nextFocus();
+                                              FocusScope.of(context).unfocus();
                                             },
-                                            minWidth: 110,
+                                            // minWidth: 110,
+                                            minWidth: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.9,
                                             padding: EdgeInsets.all(0),
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:

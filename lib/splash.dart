@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:library_app/ui/screens/admin/admDashboard.dart';
 import 'package:library_app/ui/screens/login.dart';
 import 'package:library_app/ui/screens/user/dashboard.dart';
+import 'package:library_app/ui/screens/user/localUser.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -25,6 +26,13 @@ class _SplashScreenState extends State<SplashScreen> {
               .get()
               .then((doc) async {
             if (doc.exists) {
+              DocumentSnapshot snap = await FirebaseFirestore.instance
+                  .collection("user")
+                  .doc(user.email)
+                  .get();
+              LocalUser.userData.name = snap['name'].toString();
+              LocalUser.userData.email = snap['email'].toString();
+
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => UserDashboard()));
             } else {

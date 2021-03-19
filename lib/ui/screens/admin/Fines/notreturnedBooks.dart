@@ -131,12 +131,12 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                           context)
                                                                       .size
                                                                       .width *
-                                                                  0.8,
+                                                                  0.7,
                                                               width: MediaQuery.of(
                                                                           context)
                                                                       .size
                                                                       .width *
-                                                                  0.8,
+                                                                  0.7,
                                                               child: ClipRRect(
                                                                   borderRadius:
                                                                       BorderRadius
@@ -188,12 +188,12 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                           context)
                                                                       .size
                                                                       .width *
-                                                                  0.8,
+                                                                  0.7,
                                                               width: MediaQuery.of(
                                                                           context)
                                                                       .size
                                                                       .width *
-                                                                  0.8,
+                                                                  0.7,
                                                               child: ClipRRect(
                                                                   borderRadius:
                                                                       BorderRadius
@@ -252,12 +252,12 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                           context)
                                                                       .size
                                                                       .width *
-                                                                  0.8,
+                                                                  0.7,
                                                               width: MediaQuery.of(
                                                                           context)
                                                                       .size
                                                                       .width *
-                                                                  0.8,
+                                                                  0.7,
                                                               child: ClipRRect(
                                                                   borderRadius:
                                                                       BorderRadius
@@ -325,7 +325,7 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                       context)
                                                                   .size
                                                                   .width *
-                                                              0.8,
+                                                              0.7,
                                                           decoration: BoxDecoration(
                                                               borderRadius:
                                                                   BorderRadius
