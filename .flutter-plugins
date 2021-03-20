@@ -1,8 +1,8 @@
 # This is a generated file; do not edit or check into version control.
-cloud_firestore=D:\\Windows\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\cloud_firestore-1.0.1\\
-cloud_firestore_web=D:\\Windows\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\cloud_firestore_web-1.0.1\\
-firebase_auth=D:\\Windows\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth-1.0.1\\
-firebase_auth_web=D:\\Windows\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth_web-1.0.2\\
-firebase_core=D:\\Windows\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core-1.0.1\\
-firebase_core_web=D:\\Windows\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core_web-1.0.1\\
-fluttertoast=D:\\Windows\\Flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\fluttertoast-7.1.8\\
+cloud_firestore=C:\\srs\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\cloud_firestore-1.0.1\\
+cloud_firestore_web=C:\\srs\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\cloud_firestore_web-1.0.1\\
+firebase_auth=C:\\srs\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth-1.0.1\\
+firebase_auth_web=C:\\srs\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth_web-1.0.2\\
+firebase_core=C:\\srs\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core-1.0.1\\
+firebase_core_web=C:\\srs\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core_web-1.0.1\\
+fluttertoast=C:\\srs\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\fluttertoast-7.1.8\\

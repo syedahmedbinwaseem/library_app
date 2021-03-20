@@ -104,8 +104,14 @@ class _UsersState extends State<Users> {
                                           padding:
                                               const EdgeInsets.only(left: 8),
                                           child: Container(
-                                            height: 50,
-                                            width: 50,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.25,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.25,
                                             child: ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(10),
