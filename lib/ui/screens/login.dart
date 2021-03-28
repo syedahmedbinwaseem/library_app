@@ -200,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
           FocusScope.of(context).unfocus();
         },
         child: Scaffold(
-          backgroundColor: Colors.blue,
+          backgroundColor: Color(0xff0e2f56),
           body: Column(
             children: [
               Stack(
@@ -209,7 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: height * 0.2,
                     width: width,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Color(0xff0e2f56),
                     ),
                   ),
                   Positioned(
@@ -382,7 +382,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: TextStyle(
                                 fontFamily: 'Sofia',
                                 fontSize: 16,
-                                color: Colors.blue,
+                                color: Color(0xff0e2f56),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -398,7 +398,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }
                               },
                               height: width * 0.12,
-                              color: Colors.blue,
+                              color: Color(0xff0e2f56),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
@@ -442,7 +442,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         style: TextStyle(
                                             fontFamily: 'Sofia',
                                             fontSize: height * 0.02,
-                                            color: Colors.blue,
+                                            color: Color(0xff0e2f56),
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ],

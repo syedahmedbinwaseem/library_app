@@ -115,7 +115,7 @@ class _SignUpState extends State<SignUp> {
           FocusScope.of(context).unfocus();
         },
         child: Scaffold(
-          backgroundColor: Colors.blue,
+          backgroundColor: Color(0xff0e2f56),
           body: Column(
             children: [
               Stack(
@@ -124,7 +124,7 @@ class _SignUpState extends State<SignUp> {
                     height: height * 0.2,
                     width: width,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Color(0xff0e2f56),
                     ),
                   ),
                   Positioned(
@@ -340,7 +340,7 @@ class _SignUpState extends State<SignUp> {
                                 }
                               },
                               height: width * 0.12,
-                              color: Colors.blue,
+                              color: Color(0xff0e2f56),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
@@ -380,7 +380,7 @@ class _SignUpState extends State<SignUp> {
                                           },
                                         style: TextStyle(
                                             fontSize: height * 0.02,
-                                            color: Colors.blue,
+                                            color: Color(0xff0e2f56),
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ],
