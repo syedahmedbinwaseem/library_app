@@ -1,5 +1,8 @@
-
 import 'package:flutter/material.dart';
+import 'package:library_app/ui/screens/user/dashboard.dart';
+import 'package:library_app/ui/screens/user/issued.dart';
+import 'package:library_app/ui/screens/user/profile.dart';
+
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class BottomNavigator extends StatelessWidget {
@@ -8,7 +11,7 @@ class BottomNavigator extends StatelessWidget {
       PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildScreens() {
-    return [Dashboard(), Transactions(), Profile()];
+    return [UserDashboard(), Issued(), Profile()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -17,22 +20,22 @@ class BottomNavigator extends StatelessWidget {
         icon: Icon(Icons.home),
         title: ("Dashboard"),
         textStyle: TextStyle(color: Colors.black, fontFamily: 'Sofia'),
-        activeColor: Colors.teal,
-        inactiveColor: Colors.black38,
+        activeColorPrimary: Color(0xff0e2f56),
+        inactiveColorPrimary: Colors.black38,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.shopping_cart),
-        title: ("Transactions"),
-        activeColor: Colors.teal,
+        icon: Icon(Icons.book),
+        title: ("Issued Books"),
+        activeColorPrimary: Color(0xff0e2f56),
         textStyle: TextStyle(color: Colors.black, fontFamily: 'Sofia'),
-        inactiveColor: Colors.black38,
+        inactiveColorPrimary: Colors.black38,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.person),
         title: ("Profile"),
-        activeColor: Colors.teal,
+        activeColorPrimary: Color(0xff0e2f56),
         textStyle: TextStyle(color: Colors.black, fontFamily: 'Sofia'),
-        inactiveColor: Colors.black38,
+        inactiveColorPrimary: Colors.black38,
       ),
     ];
   }

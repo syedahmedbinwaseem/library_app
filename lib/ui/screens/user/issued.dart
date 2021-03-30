@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'package:library_app/ui/screens/user/localUser.dart';
+import 'package:library_app/utils/colors.dart';
 
 class Issued extends StatefulWidget {
   @override
@@ -26,170 +26,114 @@ class _IssuedState extends State<Issued> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        FocusScope.of(context).requestFocus();
-        FocusScope.of(context).nextFocus();
+        FocusScope.of(context).unfocus();
       },
       child: Scaffold(
+        backgroundColor: navyBlue,
         appBar: AppBar(
           title: Text(
             'Issued Books',
-            style: TextStyle(fontFamily: 'Sofia', fontSize: 22),
+            style: TextStyle(
+              fontFamily: 'Sofia',
+              color: Colors.white,
+            ),
           ),
+          backgroundColor: navyBlue,
+          elevation: 0,
         ),
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 15),
-          child: Column(
-            children: [
-              SizedBox(height: 10),
-              Expanded(
+        body: Column(
+          children: [
+            Expanded(
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                ),
                 child: StreamBuilder(
-                    stream: FirebaseFirestore.instance
-                        .collection('books')
-                        .where('issued', isEqualTo: LocalUser.userData.email)
-                        .orderBy('added_on', descending: true)
-                        .snapshots(),
-                    builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                      return !snapshot.hasData
-                          ? Container(
-                              child: Center(
-                                child: CircularProgressIndicator(),
-                              ),
-                            )
-                          : Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.only(left: 5),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey.withOpacity(0.2),
-                                  ),
-                                  child: Stack(
-                                    children: [
-                                      TextField(
-                                        textCapitalization:
-                                            TextCapitalization.words,
-                                        controller: searchItems,
-                                        style: TextStyle(fontFamily: 'Sofia'),
-                                        decoration: InputDecoration(
-                                            suffixIcon: IconButton(
-                                              icon: Icon(
-                                                Icons.clear,
-                                                size: 18,
-                                              ),
-                                              onPressed: () {
-                                                searchItems.clear();
-                                              },
-                                            ),
-                                            contentPadding:
-                                                EdgeInsets.only(top: 17),
-                                            prefixIcon: Icon(Icons.search),
-                                            border: InputBorder.none,
-                                            focusedBorder: InputBorder.none,
-                                            enabledBorder: InputBorder.none,
-                                            errorBorder: InputBorder.none,
-                                            disabledBorder: InputBorder.none,
-                                            hintText: 'Search',
-                                            hintStyle:
-                                                TextStyle(fontFamily: 'Sofia')),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Expanded(
-                                  child: ListView.builder(
-                                    itemCount: snapshot.data.docs.length,
-                                    itemBuilder: (context, index) {
-                                      if (snapshot.data.docs[index]['name']
-                                              .toString()
-                                              .toLowerCase()
-                                              .contains(
-                                                  keyword.toLowerCase()) ||
-                                          snapshot.data.docs[index]['author']
-                                              .toString()
-                                              .toLowerCase()
-                                              .contains(keyword.toLowerCase()))
-                                        return Padding(
-                                          padding:
-                                              EdgeInsets.fromLTRB(0, 10, 0, 10),
-                                          // ignore: deprecated_member_use
-                                          child: FlatButton(
-                                            onPressed: () {
-                                              FocusScope.of(context).unfocus();
-                                            },
-                                            // minWidth: 110,
-                                            minWidth: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.9,
-                                            padding: EdgeInsets.all(0),
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10)),
-                                            child: Container(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.35,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.9,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                color: Colors.blueAccent
-                                                    .withOpacity(0.4),
-                                              ),
-                                              padding: EdgeInsets.all(20),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    snapshot.data.docs[index]
-                                                        ['name'],
-                                                    style: TextStyle(
-                                                        fontFamily: 'Sofia',
-                                                        fontSize: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .width *
-                                                            0.07,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  SizedBox(height: 5),
-                                                  Text(
-                                                    'By ' +
-                                                        snapshot.data
-                                                                .docs[index]
-                                                            ['author'],
-                                                    style: TextStyle(
-                                                        fontFamily: 'Sofia',
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.normal),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
+                  stream: FirebaseFirestore.instance
+                      .collection('books')
+                      .where('issued', isEqualTo: LocalUser.userData.email)
+                      .orderBy('added_on', descending: true)
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    return !snapshot.hasData
+                        ? Container(
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          )
+                        : ListView.builder(
+                            itemCount: snapshot.data.docs.length,
+                            itemBuilder: (context, index) {
+                              if (snapshot.data.docs[index]['name']
+                                      .toString()
+                                      .toLowerCase()
+                                      .contains(keyword.toLowerCase()) ||
+                                  snapshot.data.docs[index]['author']
+                                      .toString()
+                                      .toLowerCase()
+                                      .contains(keyword.toLowerCase()))
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.15,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.95,
+                                    decoration: BoxDecoration(
+                                      color: pink,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 15, right: 15),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            snapshot.data.docs[index]['name'],
+                                            style: TextStyle(
+                                                fontFamily: 'Sofia',
+                                                color: Colors.white,
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.07,
+                                                fontWeight: FontWeight.bold),
                                           ),
-                                        );
-                                      else
-                                        return Container();
-                                    },
+                                          SizedBox(height: 5),
+                                          Text(
+                                            'By ' +
+                                                snapshot.data.docs[index]
+                                                    ['author'],
+                                            style: TextStyle(
+                                                fontFamily: 'Sofia',
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.normal),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ],
-                            );
-                    }),
-              )
-            ],
-          ),
+                                );
+                              else
+                                return Container();
+                            },
+                          );
+                  },
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:library_app/ui/screens/admin/admDashboard.dart';
 import 'package:library_app/ui/screens/login.dart';
-import 'package:library_app/ui/screens/user/dashboard.dart';
+import 'package:library_app/ui/screens/user/bottomavigator.dart';
 import 'package:library_app/ui/screens/user/localUser.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
               LocalUser.userData.email = snap['email'].toString();
 
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => UserDashboard()));
+                  MaterialPageRoute(builder: (context) => BottomNavigator()));
             } else {
               try {
                 await FirebaseFirestore.instance

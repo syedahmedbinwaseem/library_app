@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:library_app/ui/screens/admin/admDashboard.dart';
 import 'package:library_app/ui/screens/signUp.dart';
-import 'package:library_app/ui/screens/user/dashboard.dart';
+import 'package:library_app/ui/screens/user/bottomavigator.dart';
+
 import 'package:library_app/ui/screens/user/localUser.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
@@ -57,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
             }
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => UserDashboard()),
+                MaterialPageRoute(builder: (context) => BottomNavigator()),
                 (route) => false);
           } on FirebaseAuthException catch (e) {
             if (e.code == 'user-not-found') {

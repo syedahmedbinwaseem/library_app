@@ -125,7 +125,7 @@ class _DeleteUserState extends State<DeleteUser> {
             child: Container(
               width: MediaQuery.of(context).size.width * 0.9,
               padding: EdgeInsets.all(13),
-              height: 230,
+              height: MediaQuery.of(context).size.width * 0.8,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
