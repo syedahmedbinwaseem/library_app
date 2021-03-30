@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
 import 'package:library_app/ui/screens/login.dart';
-
 import 'package:library_app/ui/screens/user/localUser.dart';
 
 class Profile extends StatefulWidget {
@@ -17,7 +15,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     // double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
           title: Text('Profile'),
