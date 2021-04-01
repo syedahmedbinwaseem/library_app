@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_app/ui/screens/user/dashboard.dart';
 import 'package:library_app/ui/screens/user/issued.dart';
+import 'package:library_app/ui/screens/user/notifications.dart';
 import 'package:library_app/ui/screens/user/profile.dart';
 
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -11,7 +12,7 @@ class BottomNavigator extends StatelessWidget {
       PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildScreens() {
-    return [UserDashboard(), Issued(), Profile()];
+    return [UserDashboard(), Issued(), Notifications(), Profile()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -26,6 +27,13 @@ class BottomNavigator extends StatelessWidget {
       PersistentBottomNavBarItem(
         icon: Icon(Icons.book),
         title: ("Issued Books"),
+        activeColorPrimary: Color(0xff0e2f56),
+        textStyle: TextStyle(color: Colors.black, fontFamily: 'Sofia'),
+        inactiveColorPrimary: Colors.black38,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.notifications),
+        title: ("Notifications"),
         activeColorPrimary: Color(0xff0e2f56),
         textStyle: TextStyle(color: Colors.black, fontFamily: 'Sofia'),
         inactiveColorPrimary: Colors.black38,

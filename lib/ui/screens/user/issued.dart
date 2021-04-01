@@ -64,71 +64,99 @@ class _IssuedState extends State<Issued> {
                     return !snapshot.hasData
                         ? Container(
                             child: Center(
-                              child: CircularProgressIndicator(),
+                              child: CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(navyBlue),
+                              ),
                             ),
                           )
-                        : ListView.builder(
-                            itemCount: snapshot.data.docs.length,
-                            itemBuilder: (context, index) {
-                              if (snapshot.data.docs[index]['name']
-                                      .toString()
-                                      .toLowerCase()
-                                      .contains(keyword.toLowerCase()) ||
-                                  snapshot.data.docs[index]['author']
-                                      .toString()
-                                      .toLowerCase()
-                                      .contains(keyword.toLowerCase()))
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.15,
-                                    width: MediaQuery.of(context).size.width *
-                                        0.95,
-                                    decoration: BoxDecoration(
-                                      color: pink,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 15, right: 15),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            snapshot.data.docs[index]['name'],
-                                            style: TextStyle(
-                                                fontFamily: 'Sofia',
-                                                color: Colors.white,
-                                                fontSize: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.07,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          SizedBox(height: 5),
-                                          Text(
-                                            'By ' +
-                                                snapshot.data.docs[index]
-                                                    ['author'],
-                                            style: TextStyle(
-                                                fontFamily: 'Sofia',
-                                                color: Colors.white,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.normal),
-                                          ),
-                                        ],
-                                      ),
+                        : snapshot.data.docs.isEmpty
+                            ? Container(
+                                child: Center(
+                                  child: Text(
+                                    'No Books Issued',
+                                    style: TextStyle(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.08,
+                                      fontFamily: 'Sofia',
                                     ),
                                   ),
-                                );
-                              else
-                                return Container();
-                            },
-                          );
+                                ),
+                              )
+                            : ListView.builder(
+                                itemCount: snapshot.data.docs.length,
+                                itemBuilder: (context, index) {
+                                  if (snapshot.data.docs[index]['name']
+                                          .toString()
+                                          .toLowerCase()
+                                          .contains(keyword.toLowerCase()) ||
+                                      snapshot.data.docs[index]['author']
+                                          .toString()
+                                          .toLowerCase()
+                                          .contains(keyword.toLowerCase()))
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.15,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.95,
+                                        decoration: BoxDecoration(
+                                          color: pink,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 15, right: 15),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                snapshot.data.docs[index]
+                                                    ['name'],
+                                                style: TextStyle(
+                                                    fontFamily: 'Sofia',
+                                                    color: Colors.white,
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.06,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              SizedBox(height: 5),
+                                              Text(
+                                                'By ' +
+                                                    snapshot.data.docs[index]
+                                                        ['author'],
+                                                style: TextStyle(
+                                                    fontFamily: 'Sofia',
+                                                    color: Colors.white,
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.05,
+                                                    fontWeight:
+                                                        FontWeight.normal),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  else
+                                    return Container();
+                                },
+                              );
                   },
                 ),
               ),

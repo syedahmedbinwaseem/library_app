@@ -105,7 +105,10 @@ class _UserDashboardState extends State<UserDashboard> {
                     return !snapshot.hasData
                         ? Container(
                             child: Center(
-                              child: CircularProgressIndicator(),
+                              child: CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(navyBlue),
+                              ),
                             ),
                           )
                         : ListView.builder(

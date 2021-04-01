@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:library_app/ui/screens/login.dart';
 import 'package:library_app/ui/screens/user/localUser.dart';
+import 'package:library_app/utils/colors.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -20,6 +21,7 @@ class _ProfileState extends State<Profile> {
         appBar: AppBar(
           title: Text('Profile'),
           elevation: 0,
+          backgroundColor: navyBlue,
           actions: [
             Padding(
               padding: const EdgeInsets.only(
@@ -47,7 +49,7 @@ class _ProfileState extends State<Profile> {
                         height: width * 0.5,
                         width: width,
                         decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: navyBlue,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
