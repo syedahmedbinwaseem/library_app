@@ -38,10 +38,10 @@ class _NotificationsState extends State<Notifications> {
               ),
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
-                    .collection('user')
-                    .doc(LocalUser.userData.email)
-                    .collection('fine')
-                    .where('fineAmount', isNull: true)
+                    // .collection('user')
+                    // .doc(LocalUser.userData.email)
+                    .collection('books')
+                    .where('fine', isNull: true)
                     .snapshots(),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   return !snapshot.hasData
@@ -93,7 +93,8 @@ class _NotificationsState extends State<Notifications> {
                                           Text(
                                             'You have been fined for not returnig ' +
                                                 snapshot.data.docs[index]
-                                                    ['name'],
+                                                    ['name'] +
+                                                'of ${snapshot.data.docs[index]['fine'].toString()}',
                                             style: TextStyle(
                                                 fontFamily: 'Sofia',
                                                 color: Colors.white,
