@@ -18,6 +18,7 @@ class _ProfileState extends State<Profile> {
     // double height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text('Profile'),
           elevation: 0,
@@ -106,6 +107,7 @@ class _ProfileState extends State<Profile> {
                                           MediaQuery.of(context).size.width *
                                               0.045),
                                 ),
+                                SizedBox(height: 20),
                                 TextButton(
                                     child: Row(
                                       mainAxisAlignment:

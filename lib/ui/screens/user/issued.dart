@@ -148,6 +148,84 @@ class _IssuedState extends State<Issued> {
                                                     fontWeight:
                                                         FontWeight.normal),
                                               ),
+                                              SizedBox(height: 10),
+                                              Center(
+                                                child: Text(
+                                                  'Issued On:\t' +
+                                                      snapshot
+                                                          .data
+                                                          .docs[index]
+                                                              ['issued_on']
+                                                          .toDate()
+                                                          .day
+                                                          .toString() +
+                                                      '-' +
+                                                      snapshot
+                                                          .data
+                                                          .docs[index]
+                                                              ['issued_on']
+                                                          .toDate()
+                                                          .month
+                                                          .toString() +
+                                                      '-' +
+                                                      snapshot
+                                                          .data
+                                                          .docs[index]
+                                                              ['issued_on']
+                                                          .toDate()
+                                                          .year
+                                                          .toString(),
+                                                  textAlign: TextAlign.right,
+                                                  style: TextStyle(
+                                                      fontFamily: 'Sofia',
+                                                      color: Colors.white,
+                                                      fontSize:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.05,
+                                                      fontWeight:
+                                                          FontWeight.normal),
+                                                ),
+                                              ),
+                                              Center(
+                                                child: Text(
+                                                  'Return On:\t' +
+                                                      snapshot
+                                                          .data
+                                                          .docs[index]
+                                                              ['return_on']
+                                                          .toDate()
+                                                          .day
+                                                          .toString() +
+                                                      '-' +
+                                                      snapshot
+                                                          .data
+                                                          .docs[index]
+                                                              ['return_on']
+                                                          .toDate()
+                                                          .month
+                                                          .toString() +
+                                                      '-' +
+                                                      snapshot
+                                                          .data
+                                                          .docs[index]
+                                                              ['return_on']
+                                                          .toDate()
+                                                          .year
+                                                          .toString(),
+                                                  style: TextStyle(
+                                                      fontFamily: 'Sofia',
+                                                      color: Colors.white,
+                                                      fontSize:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.05,
+                                                      fontWeight:
+                                                          FontWeight.normal),
+                                                ),
+                                              ),
                                             ],
                                           ),
                                         ),

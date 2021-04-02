@@ -131,12 +131,12 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                           context)
                                                                       .size
                                                                       .width *
-                                                                  0.7,
+                                                                  0.75,
                                                               width: MediaQuery.of(
                                                                           context)
                                                                       .size
                                                                       .width *
-                                                                  0.7,
+                                                                  0.75,
                                                               child: ClipRRect(
                                                                   borderRadius:
                                                                       BorderRadius

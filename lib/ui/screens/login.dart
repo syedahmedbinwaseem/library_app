@@ -298,6 +298,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             TextFormField(
                               style: TextStyle(fontFamily: 'Sofia'),
+                              keyboardType: TextInputType.emailAddress,
                               validator: (value) {
                                 return value.isEmpty
                                     ? 'Enter email'
@@ -308,7 +309,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               controller: email,
                               textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
-                                hintText: 'Enter Username or email',
+                                hintText: 'Enter email',
                                 hintStyle: TextStyle(
                                   fontFamily: 'Sofia',
                                   fontSize: 14,
