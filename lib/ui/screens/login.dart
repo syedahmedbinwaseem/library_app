@@ -498,133 +498,127 @@ class _LoginScreenState extends State<LoginScreen> {
         builder: (context) {
           return StatefulBuilder(
             builder: (context, setState) {
-              return AnimatedPadding(
-                  padding: MediaQuery.of(context).viewInsets,
-                  duration: const Duration(milliseconds: 100),
-                  curve: Curves.decelerate,
-                  child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      padding: const EdgeInsets.only(
-                          left: 15, right: 15, top: 30, bottom: 20),
-                      child: Form(
-                        key: fKey1,
-                        child: Wrap(
-                          spacing: 20,
-                          children: [
-                            Text(
-                              'Forgot Password',
-                              style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.07,
-                                fontFamily: 'Sofia',
-                              ),
-                            ),
-                            TextFormField(
-                              keyboardType: TextInputType.emailAddress,
-                              textInputAction: TextInputAction.done,
-                              style: TextStyle(fontFamily: 'Sofia'),
-                              validator: (value) {
-                                return value.isEmpty
-                                    ? 'Email is required'
-                                    : validateEmail(value) == 1
-                                        ? 'Invalid email'
-                                        : null;
-                              },
-                              controller: forgot,
-                              decoration: InputDecoration(
-                                errorStyle: TextStyle(
-                                    fontFamily: 'Sofia',
-                                    color: Colors.red,
-                                    fontSize: 14),
-                                labelText: 'Email',
-                                labelStyle: TextStyle(
-                                    fontFamily: 'Sofia',
-                                    color: Colors.black,
-                                    fontSize: 14),
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                            // ignore: deprecated_member_use
-                            FlatButton(
-                              onPressed: () async {
-                                if (fKey1.currentState.validate()) {
-                                  try {
-                                    setState(() {
-                                      isLoadingForgot = true;
-                                    });
-                                    final FirebaseAuth _firebaseAuth =
-                                        FirebaseAuth.instance;
-                                    await _firebaseAuth.sendPasswordResetEmail(
-                                        email: forgot.text.toString());
-                                    fToast.showToast(
-                                      child: ToastWidget.toast(
-                                          'Password reset link sent on your email',
-                                          Icon(Icons.done, size: 20)),
-                                      toastDuration: Duration(seconds: 2),
-                                      gravity: ToastGravity.BOTTOM,
-                                    );
-
-                                    setState(() {
-                                      isLoadingForgot = false;
-                                    });
-                                    Navigator.pop(context);
-                                  } catch (e) {
-                                    Navigator.pop(context);
-
-                                    setState(() {
-                                      isLoadingForgot = false;
-                                    });
-                                    if (e.code == 'too-many-requests') {
-                                      fToast.showToast(
-                                        child: ToastWidget.toast(
-                                            'You are trying too often. Please try again later',
-                                            Icon(Icons.error, size: 20)),
-                                        toastDuration: Duration(seconds: 2),
-                                        gravity: ToastGravity.BOTTOM,
-                                      );
-                                    } else {
-                                      fToast.showToast(
-                                        child: ToastWidget.toast(
-                                            'Operation failed. Try again later',
-                                            Icon(Icons.error, size: 20)),
-                                        toastDuration: Duration(seconds: 2),
-                                        gravity: ToastGravity.BOTTOM,
-                                      );
-                                    }
-                                  }
-                                }
-                              },
-                              height: 40,
-                              color: navyBlue,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Center(
-                                child: isLoadingForgot == true
-                                    ? Container(
-                                        height: 40,
-                                        width: 40,
-                                        padding: EdgeInsets.all(10),
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                                  Colors.white),
-                                        ),
-                                      )
-                                    : Text(
-                                        'RESET',
-                                        style: TextStyle(
-                                            fontFamily: 'Sofia',
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                              ),
-                            ),
-                          ],
+              return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  padding: const EdgeInsets.only(
+                      left: 15, right: 15, top: 30, bottom: 20),
+                  child: Form(
+                    key: fKey1,
+                    child: Wrap(
+                      spacing: 20,
+                      children: [
+                        Text(
+                          'Forgot Password',
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * 0.07,
+                            fontFamily: 'Sofia',
+                          ),
                         ),
-                      )));
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.done,
+                          style: TextStyle(fontFamily: 'Sofia'),
+                          validator: (value) {
+                            return value.isEmpty
+                                ? 'Email is required'
+                                : validateEmail(value) == 1
+                                    ? 'Invalid email'
+                                    : null;
+                          },
+                          controller: forgot,
+                          decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                                fontFamily: 'Sofia',
+                                color: Colors.red,
+                                fontSize: 14),
+                            labelText: 'Email',
+                            labelStyle: TextStyle(
+                                fontFamily: 'Sofia',
+                                color: Colors.black,
+                                fontSize: 14),
+                          ),
+                        ),
+                        SizedBox(height: 30),
+                        // ignore: deprecated_member_use
+                        FlatButton(
+                          onPressed: () async {
+                            if (fKey1.currentState.validate()) {
+                              try {
+                                setState(() {
+                                  isLoadingForgot = true;
+                                });
+                                final FirebaseAuth _firebaseAuth =
+                                    FirebaseAuth.instance;
+                                await _firebaseAuth.sendPasswordResetEmail(
+                                    email: forgot.text.toString());
+                                fToast.showToast(
+                                  child: ToastWidget.toast(
+                                      'Password reset link sent on your email',
+                                      Icon(Icons.done, size: 20)),
+                                  toastDuration: Duration(seconds: 2),
+                                  gravity: ToastGravity.BOTTOM,
+                                );
+
+                                setState(() {
+                                  isLoadingForgot = false;
+                                });
+                                Navigator.pop(context);
+                              } catch (e) {
+                                Navigator.pop(context);
+
+                                setState(() {
+                                  isLoadingForgot = false;
+                                });
+                                if (e.code == 'too-many-requests') {
+                                  fToast.showToast(
+                                    child: ToastWidget.toast(
+                                        'You are trying too often. Please try again later',
+                                        Icon(Icons.error, size: 20)),
+                                    toastDuration: Duration(seconds: 2),
+                                    gravity: ToastGravity.BOTTOM,
+                                  );
+                                } else {
+                                  fToast.showToast(
+                                    child: ToastWidget.toast(
+                                        'Operation failed. Try again later',
+                                        Icon(Icons.error, size: 20)),
+                                    toastDuration: Duration(seconds: 2),
+                                    gravity: ToastGravity.BOTTOM,
+                                  );
+                                }
+                              }
+                            }
+                          },
+                          height: 40,
+                          color: navyBlue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Center(
+                            child: isLoadingForgot == true
+                                ? Container(
+                                    height: 40,
+                                    width: 40,
+                                    padding: EdgeInsets.all(10),
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                          Colors.white),
+                                    ),
+                                  )
+                                : Text(
+                                    'RESET',
+                                    style: TextStyle(
+                                        fontFamily: 'Sofia',
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ));
             },
           );
         }).then((value) {
