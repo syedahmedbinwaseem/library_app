@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:library_app/ui/screens/admin/Manage%20Users/addUser.dart';
 import 'package:library_app/ui/screens/admin/Manage%20Users/deleteUser.dart';
+import 'package:library_app/utils/colors.dart';
 
 class Users extends StatefulWidget {
   @override
@@ -29,6 +30,8 @@ class _UsersState extends State<Users> {
 
   @override
   Widget build(BuildContext context) {
+    //var hieght = MediaQuery.of(context).size.height;
+    //var width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -39,6 +42,7 @@ class _UsersState extends State<Users> {
             'Users',
             style: TextStyle(fontFamily: 'Sofia', fontSize: 22),
           ),
+          backgroundColor: navyBlue,
         ),
         floatingActionButton: addUser(),
         body: Padding(
@@ -171,10 +175,10 @@ class _UsersState extends State<Users> {
                                                     .width *
                                                 0.9,
                                             decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                color: Colors.blueAccent
-                                                    .withOpacity(0.34)),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: pink,
+                                            ),
                                             child: Padding(
                                               padding: const EdgeInsets.only(
                                                   left: 10, right: 10),
@@ -192,19 +196,27 @@ class _UsersState extends State<Users> {
                                                           MediaQuery.of(context)
                                                                   .size
                                                                   .width *
-                                                              0.07,
+                                                              0.06,
                                                       fontFamily: 'Sofia',
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    height: 10,
+                                                    height: 5,
                                                   ),
                                                   Text(
                                                     snapshot.data.docs[index]
                                                         ['email'],
                                                     style: TextStyle(
-                                                      fontSize: 16,
+                                                      fontSize:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.04,
                                                       fontFamily: 'Sofia',
+                                                      color: Colors.white,
                                                     ),
                                                   ),
                                                 ],
@@ -230,6 +242,7 @@ class _UsersState extends State<Users> {
 
   addUser() {
     return FloatingActionButton(
+      backgroundColor: navyBlue,
       onPressed: () {
         showDialog(
             context: context,

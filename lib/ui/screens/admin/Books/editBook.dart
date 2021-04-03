@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:library_app/utils/colors.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 // ignore: must_be_immutable
@@ -137,11 +138,14 @@ class _EditBookState extends State<EditBook> {
                                 });
                               }
                             },
-                            child: Text('Save',
-                                style: TextStyle(
-                                    fontFamily: "Sofia",
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green)),
+                            child: Text(
+                              'Save',
+                              style: TextStyle(
+                                fontFamily: "Sofia",
+                                fontWeight: FontWeight.bold,
+                                color: navyBlue,
+                              ),
+                            ),
                           ),
                         ],
                       ),

@@ -6,6 +6,7 @@ import 'package:library_app/ui/screens/admin/admDashboard.dart';
 import 'package:library_app/ui/screens/login.dart';
 import 'package:library_app/ui/screens/user/bottomavigator.dart';
 import 'package:library_app/ui/screens/user/localUser.dart';
+import 'package:library_app/utils/colors.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -71,30 +72,48 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-        child: Center(
-          child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Center(
+              child: Container(
                 height: 200,
                 width: 200,
                 child: Image.asset('assets/images/library.png'),
               ),
-              SizedBox(height: 30),
-              Text(
-                'InfyLMS',
-                style: TextStyle(
-                    fontSize: 40, color: Colors.blue, fontFamily: 'Sofia'),
+            ),
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.8,
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'ILM',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.1,
+                        color: navyBlue,
+                        fontFamily: 'Sofia',
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    Text(
+                      'Connect,Discover & Learn',
+                      style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.06,
+                        color: pink,
+                        fontFamily: 'Sofia',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
               ),
-              SizedBox(height: 5),
-              Text(
-                'POWERFUL LIBRARY MANAGEMENT',
-                style: TextStyle(
-                    fontSize: 15, color: Colors.blue, fontFamily: 'Sofia'),
-              )
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

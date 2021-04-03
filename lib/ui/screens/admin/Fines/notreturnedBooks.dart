@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:library_app/ui/screens/admin/Books/returnedBook.dart';
 import 'package:library_app/ui/screens/admin/Fines/generateFine.dart';
 import 'package:library_app/ui/screens/admin/Fines/payFine.dart';
+import 'package:library_app/utils/colors.dart';
 
 class BooksNotReturned extends StatefulWidget {
   @override
@@ -36,9 +37,10 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
             'Overdue Books',
             style: TextStyle(fontFamily: 'Sofia', fontSize: 22),
           ),
+          backgroundColor: navyBlue,
         ),
         body: Padding(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(8),
           child: StreamBuilder(
               stream:
                   FirebaseFirestore.instance.collection('books').snapshots(),
@@ -131,7 +133,7 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                           context)
                                                                       .size
                                                                       .width *
-                                                                  0.75,
+                                                                  0.65,
                                                               width: MediaQuery.of(
                                                                           context)
                                                                       .size
@@ -188,7 +190,7 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                           context)
                                                                       .size
                                                                       .width *
-                                                                  0.75,
+                                                                  0.65,
                                                               width: MediaQuery.of(
                                                                           context)
                                                                       .size
@@ -252,7 +254,7 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                           context)
                                                                       .size
                                                                       .width *
-                                                                  0.75,
+                                                                  0.65,
                                                               width: MediaQuery.of(
                                                                           context)
                                                                       .size
@@ -321,11 +323,11 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                     .circular(
                                                                         10)),
                                                         child: Container(
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.75,
+                                                          // height: MediaQuery.of(
+                                                          //            context)
+                                                          //       .size
+                                                          //    .width *
+                                                          //  0.75,
                                                           decoration: BoxDecoration(
                                                               borderRadius:
                                                                   BorderRadius
@@ -360,13 +362,18 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                       snapshot
                                                                           .data
                                                                           .docs[index]['name'],
-                                                                      style: TextStyle(
-                                                                          fontFamily:
-                                                                              'Sofia',
-                                                                          fontSize:
-                                                                              20,
-                                                                          fontWeight:
-                                                                              FontWeight.bold),
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .center,
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontFamily:
+                                                                            'Sofia',
+                                                                        fontSize:
+                                                                            20,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -392,11 +399,16 @@ class _BooksNotReturnedState extends State<BooksNotReturned> {
                                                                       snapshot
                                                                           .data
                                                                           .docs[index]['issued'],
-                                                                      style: TextStyle(
-                                                                          fontFamily:
-                                                                              'Sofia',
-                                                                          fontSize:
-                                                                              20),
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontFamily:
+                                                                            'Sofia',
+                                                                        fontSize:
+                                                                            MediaQuery.of(context).size.width *
+                                                                                0.043,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
                                                                     ),
                                                                   ],
                                                                 ),

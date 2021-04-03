@@ -38,7 +38,6 @@ class _IssuedState extends State<Issued> {
               color: Colors.white,
             ),
           ),
-          backgroundColor: navyBlue,
           elevation: 0,
         ),
         body: Column(
@@ -50,8 +49,8 @@ class _IssuedState extends State<Issued> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
                   ),
                 ),
                 child: StreamBuilder(
@@ -133,7 +132,7 @@ class _IssuedState extends State<Issued> {
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
-                                              SizedBox(height: 5),
+                                              SizedBox(height: 8),
                                               Text(
                                                 'By ' +
                                                     snapshot.data.docs[index]

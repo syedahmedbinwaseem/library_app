@@ -7,6 +7,7 @@ import 'package:library_app/ui/screens/admin/Books/issuedBooks.dart';
 import 'package:library_app/ui/screens/admin/Fines/notreturnedBooks.dart';
 import 'package:library_app/ui/screens/admin/Manage%20Users/users.dart';
 import 'package:library_app/ui/screens/login.dart';
+import 'package:library_app/utils/colors.dart';
 
 class AdDashboard extends StatefulWidget {
   @override
@@ -22,37 +23,60 @@ class _AdDashboardState extends State<AdDashboard> {
       appBar: AppBar(
         title: Text(
           'Dashboard',
-          style: TextStyle(fontFamily: 'Sofia', fontSize: 22),
+          style: TextStyle(
+            fontFamily: 'Sofia',
+            fontSize: 22,
+          ),
         ),
-      ),
-      drawer: Drawer(
-        child: Container(
-          height: 40,
-          child: TextButton(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.power_settings_new_outlined,
-                    color: Colors.red,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    'Log out',
-                    style: TextStyle(
-                        fontFamily: 'Sofia', color: Colors.red, fontSize: 24),
-                  )
-                ],
-              ),
-              onPressed: () async {
-                try {
-                  await FirebaseAuth.instance.signOut();
-                } catch (e) {}
+        backgroundColor: navyBlue,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text(
+                      'Are you sure you want to logout',
+                      style: TextStyle(color: navyBlue, fontFamily: 'Sofia'),
+                    ),
+                    actions: [
+                      // ignore: deprecated_member_use
+                      FlatButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text(
+                          'Cancel',
+                          style:
+                              TextStyle(color: navyBlue, fontFamily: 'Sofia'),
+                        ),
+                      ),
+                      // ignore: deprecated_member_use
+                      FlatButton(
+                        onPressed: () async {
+                          try {
+                            await FirebaseAuth.instance.signOut();
+                          } catch (e) {}
 
-                Navigator.of(context, rootNavigator: true).pushReplacement(
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
-              }),
-        ),
+                          Navigator.of(context, rootNavigator: true)
+                              .pushReplacement(MaterialPageRoute(
+                                  builder: (context) => LoginScreen()));
+                        },
+                        child: Text(
+                          'Yes',
+                          style:
+                              TextStyle(color: navyBlue, fontFamily: 'Sofia'),
+                        ),
+                      )
+                    ],
+                  );
+                },
+              );
+            },
+          )
+        ],
       ),
       body: Container(
         padding: EdgeInsets.only(
@@ -117,7 +141,7 @@ class _AdDashboardState extends State<AdDashboard> {
       padding: EdgeInsets.all(0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Container(
-        height: height * 0.3,
+        height: height * 0.35,
         width: width * 0.45,
         decoration: BoxDecoration(
           color: color,
@@ -202,7 +226,7 @@ class _AdDashboardState extends State<AdDashboard> {
       padding: EdgeInsets.all(0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Container(
-        height: height * 0.25,
+        height: height * 0.3,
         width: width * 0.45,
         decoration: BoxDecoration(
           color: color,

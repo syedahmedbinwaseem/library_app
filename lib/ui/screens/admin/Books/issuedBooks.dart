@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:library_app/ui/screens/admin/Books/bookDetails.dart';
+import 'package:library_app/utils/colors.dart';
 
 class IssuedBooks extends StatefulWidget {
   @override
@@ -33,6 +34,7 @@ class _IssuedBooksState extends State<IssuedBooks> {
             'Issued Books',
             style: TextStyle(fontFamily: 'Sofia', fontSize: 22),
           ),
+          backgroundColor: navyBlue,
         ),
         body: Padding(
           padding: EdgeInsets.all(10),
@@ -130,15 +132,14 @@ class _IssuedBooksState extends State<IssuedBooks> {
                                                 width: MediaQuery.of(context)
                                                     .size
                                                     .width,
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.4,
+                                                //  height: MediaQuery.of(context)
+                                                //        .size
+                                                //        .width *
+                                                //   0.4,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  color: Colors.blueAccent
-                                                      .withOpacity(0.4),
+                                                  color: pink,
                                                 ),
                                                 padding: EdgeInsets.all(20),
                                                 child: Column(
@@ -149,14 +150,16 @@ class _IssuedBooksState extends State<IssuedBooks> {
                                                       snapshot.data.docs[index]
                                                           ['name'],
                                                       style: TextStyle(
-                                                          fontFamily: 'Sofia',
-                                                          fontSize: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.07,
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                        fontFamily: 'Sofia',
+                                                        fontSize: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.055,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.white,
+                                                      ),
                                                     ),
                                                     SizedBox(height: 8),
                                                     Text(
@@ -165,13 +168,19 @@ class _IssuedBooksState extends State<IssuedBooks> {
                                                                   .docs[index]
                                                               ['author'],
                                                       style: TextStyle(
-                                                          fontFamily: 'Sofia',
-                                                          fontSize: 20,
-                                                          fontWeight: FontWeight
-                                                              .normal),
+                                                        fontFamily: 'Sofia',
+                                                        fontSize: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.045,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        color: Colors.white,
+                                                      ),
                                                     ),
                                                     SizedBox(
-                                                      height: 5,
+                                                      height: 8,
                                                     ),
                                                     Align(
                                                       alignment:
@@ -181,6 +190,7 @@ class _IssuedBooksState extends State<IssuedBooks> {
                                                         style: TextStyle(
                                                           fontFamily: 'Sofia',
                                                           fontSize: 16,
+                                                          color: Colors.white,
                                                         ),
                                                       ),
                                                     ),

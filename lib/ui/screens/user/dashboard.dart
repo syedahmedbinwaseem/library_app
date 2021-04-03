@@ -47,38 +47,52 @@ class _UserDashboardState extends State<UserDashboard> {
               width: MediaQuery.of(context).size.width,
               color: navyBlue,
               child: Center(
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.08,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  padding: EdgeInsets.only(left: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
-                  ),
-                  child: Center(
-                    child: TextField(
-                      textCapitalization: TextCapitalization.words,
-                      controller: searchItems,
-                      style: TextStyle(fontFamily: 'Sofia'),
-                      decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              Icons.clear,
-                              size: 18,
-                            ),
-                            onPressed: () {
-                              searchItems.clear();
-                            },
-                          ),
-                          contentPadding: EdgeInsets.only(top: 17),
-                          prefixIcon: Icon(Icons.search),
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          hintText: 'Search',
-                          hintStyle: TextStyle(fontFamily: 'Sofia')),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  child: TextField(
+                    textCapitalization: TextCapitalization.words,
+                    controller: searchItems,
+                    cursorColor: pink,
+                    style: TextStyle(fontFamily: 'Sofia'),
+                    decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          Icons.clear,
+                          size: 18,
+                        ),
+                        onPressed: () {
+                          searchItems.clear();
+                        },
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      disabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      hintText: 'Search',
+                      hintStyle: TextStyle(
+                        fontFamily: 'Sofia',
+                      ),
                     ),
                   ),
                 ),
@@ -91,8 +105,8 @@ class _UserDashboardState extends State<UserDashboard> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15),
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
                   ),
                 ),
                 child: StreamBuilder(

@@ -5,6 +5,7 @@ import 'package:library_app/ui/screens/admin/Books/addBook.dart';
 import 'package:library_app/ui/screens/admin/Books/bookDetails.dart';
 import 'package:library_app/ui/screens/admin/Books/deleteBook.dart';
 import 'package:library_app/ui/screens/admin/Books/editBook.dart';
+import 'package:library_app/utils/colors.dart';
 
 class AvailableBooks extends StatefulWidget {
   @override
@@ -123,7 +124,7 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                                 height: MediaQuery.of(context)
                                                         .size
                                                         .width *
-                                                    0.35,
+                                                    0.34,
                                                 width: MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -175,7 +176,7 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                                 height: MediaQuery.of(context)
                                                         .size
                                                         .width *
-                                                    0.35,
+                                                    0.34,
                                                 width: MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -232,13 +233,14 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                                 FocusScope.of(context)
                                                     .unfocus();
                                                 Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            BookDetails(
-                                                              book: snapshot
-                                                                  .data
-                                                                  .docs[index],
-                                                            )));
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        BookDetails(
+                                                      book: snapshot
+                                                          .data.docs[index],
+                                                    ),
+                                                  ),
+                                                );
                                               },
                                               minWidth: 110,
                                               padding: EdgeInsets.all(0),
@@ -250,7 +252,7 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                                 height: MediaQuery.of(context)
                                                         .size
                                                         .width *
-                                                    0.35,
+                                                    0.34,
                                                 width: MediaQuery.of(context)
                                                         .size
                                                         .width *
@@ -258,14 +260,12 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  color: Colors.blueAccent
-                                                      .withOpacity(0.4),
+                                                  color: pink,
                                                 ),
                                                 padding: EdgeInsets.all(20),
                                                 child: Column(
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
+                                                      MainAxisAlignment.center,
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
@@ -273,26 +273,34 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                                       snapshot.data.docs[index]
                                                           ['name'],
                                                       style: TextStyle(
-                                                          fontFamily: 'Sofia',
-                                                          fontSize: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.07,
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                        fontFamily: 'Sofia',
+                                                        fontSize: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.06,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.white,
+                                                      ),
                                                     ),
-                                                    SizedBox(height: 8),
+                                                    SizedBox(height: 5),
                                                     Text(
                                                       'By ' +
                                                           snapshot.data
                                                                   .docs[index]
                                                               ['author'],
                                                       style: TextStyle(
-                                                          fontFamily: 'Sofia',
-                                                          fontSize: 20,
-                                                          fontWeight: FontWeight
-                                                              .normal),
+                                                        fontFamily: 'Sofia',
+                                                        fontSize: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.05,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        color: Colors.white,
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
@@ -326,6 +334,7 @@ class _AvailableBooksState extends State<AvailableBooks> {
               return AddBook();
             });
       },
+      backgroundColor: navyBlue,
       child: Center(
         child: Icon(Icons.add),
       ),

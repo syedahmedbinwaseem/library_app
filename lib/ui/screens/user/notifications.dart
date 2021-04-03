@@ -14,6 +14,7 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: navyBlue,
       appBar: AppBar(
         backgroundColor: navyBlue,
         elevation: 0,
@@ -33,8 +34,8 @@ class _NotificationsState extends State<Notifications> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
                 ),
               ),
               child: StreamBuilder(
@@ -167,14 +168,15 @@ class _NotificationsState extends State<Notifications> {
                                                   '\'${snapshot.data.docs[index]['bookName']}\'' +
                                                   ' of ${snapshot.data.docs[index]['fineAmount'].toString()}',
                                               style: TextStyle(
-                                                  fontFamily: 'Sofia',
-                                                  color: Colors.white,
-                                                  fontSize:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .width *
-                                                          0.06,
-                                                  fontWeight: FontWeight.bold),
+                                                fontFamily: 'Sofia',
+                                                color: Colors.white,
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.05,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              textAlign: TextAlign.justify,
                                             ),
                                             SizedBox(height: 5),
                                           ],
