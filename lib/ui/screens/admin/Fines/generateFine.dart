@@ -99,6 +99,7 @@ class _GenerateFineState extends State<GenerateFine> {
                                   'bookName': widget.book['name'],
                                   'fineGeneratedOn': DateTime.now(),
                                   'fineAmount': int.parse(amount.text),
+                                  'seen': false
                                 });
                                 await FirebaseFirestore.instance
                                     .collection('books')

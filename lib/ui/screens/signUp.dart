@@ -42,6 +42,7 @@ class _SignUpState extends State<SignUp> {
           'created_at': Timestamp.now(),
           'name': name.text,
           'email': email.text,
+          'image': null
         });
 
         setState(() {

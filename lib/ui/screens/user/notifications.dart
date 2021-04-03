@@ -143,9 +143,10 @@ class _NotificationsState extends State<Notifications> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.15,
+                                      padding: EdgeInsets.all(20),
+                                      // height:
+                                      //     MediaQuery.of(context).size.height *
+                                      //         0.15,
                                       width: MediaQuery.of(context).size.width *
                                           0.95,
                                       decoration: BoxDecoration(
@@ -163,8 +164,7 @@ class _NotificationsState extends State<Notifications> {
                                           children: [
                                             Text(
                                               'You have been fined for not returnig ' +
-                                                  snapshot.data.docs[index]
-                                                      ['bookName'] +
+                                                  '\'${snapshot.data.docs[index]['bookName']}\'' +
                                                   ' of ${snapshot.data.docs[index]['fineAmount'].toString()}',
                                               style: TextStyle(
                                                   fontFamily: 'Sofia',

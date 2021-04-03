@@ -32,6 +32,9 @@ class _SplashScreenState extends State<SplashScreen> {
                   .get();
               LocalUser.userData.name = snap['name'].toString();
               LocalUser.userData.email = snap['email'].toString();
+              snap.data().containsKey('image')
+                  ? LocalUser.userData.image = snap['image']
+                  : LocalUser.userData.image = null;
 
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => BottomNavigator()));

@@ -8,6 +8,8 @@ import 'package:library_app/ui/screens/signUp.dart';
 import 'package:library_app/ui/screens/user/bottomavigator.dart';
 
 import 'package:library_app/ui/screens/user/localUser.dart';
+import 'package:library_app/utils/colors.dart';
+import 'package:library_app/utils/toast.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -19,12 +21,24 @@ class _LoginScreenState extends State<LoginScreen> {
   GlobalKey<FormState> fKey = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController forgot = TextEditingController();
+  GlobalKey<FormState> fKey1 = GlobalKey<FormState>();
+  bool isLoadingForgot = false;
+  FToast fToast;
   bool showPass = true;
   bool isLoading = false;
   void toggle() {
     setState(() {
       showPass = !showPass;
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
   }
 
   void logIn() async {
@@ -52,6 +66,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     .get();
                 LocalUser.userData.name = snap['name'].toString();
                 LocalUser.userData.email = snap['email'].toString();
+                snap.data().containsKey('image')
+                    ? LocalUser.userData.image = snap['image']
+                    : LocalUser.userData.image = null;
               } catch (e) {
                 print(e);
               }
@@ -379,13 +396,19 @@ class _LoginScreenState extends State<LoginScreen> {
                             SizedBox(
                               height: 15,
                             ),
-                            Text(
-                              'Fogot Password?',
-                              style: TextStyle(
-                                fontFamily: 'Sofia',
-                                fontSize: 16,
-                                color: Color(0xff0e2f56),
-                                fontWeight: FontWeight.bold,
+                            GestureDetector(
+                              onTap: () {
+                                print('asa');
+                                generateBottomSheet(context, 10);
+                              },
+                              child: Text(
+                                'Forgot Password?',
+                                style: TextStyle(
+                                  fontFamily: 'Sofia',
+                                  fontSize: 16,
+                                  color: Color(0xff0e2f56),
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -464,6 +487,151 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  generateBottomSheet(conext, double padding) {
+    // FocusScope.of(context).unfocus();
+    showModalBottomSheet(
+        isScrollControlled: true,
+
+        // isScrollControlled: true,
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(
+            builder: (context, setState) {
+              return AnimatedPadding(
+                  padding: MediaQuery.of(context).viewInsets,
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.decelerate,
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                      ),
+                      padding: const EdgeInsets.only(
+                          left: 15, right: 15, top: 30, bottom: 20),
+                      child: Form(
+                        key: fKey1,
+                        child: Wrap(
+                          spacing: 20,
+                          children: [
+                            Text(
+                              'Forgot Password',
+                              style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.07,
+                                fontFamily: 'Sofia',
+                              ),
+                            ),
+                            TextFormField(
+                              keyboardType: TextInputType.emailAddress,
+                              textInputAction: TextInputAction.done,
+                              style: TextStyle(fontFamily: 'Sofia'),
+                              validator: (value) {
+                                return value.isEmpty
+                                    ? 'Email is required'
+                                    : validateEmail(value) == 1
+                                        ? 'Invalid email'
+                                        : null;
+                              },
+                              controller: forgot,
+                              decoration: InputDecoration(
+                                errorStyle: TextStyle(
+                                    fontFamily: 'Sofia',
+                                    color: Colors.red,
+                                    fontSize: 14),
+                                labelText: 'Email',
+                                labelStyle: TextStyle(
+                                    fontFamily: 'Sofia',
+                                    color: Colors.black,
+                                    fontSize: 14),
+                              ),
+                            ),
+                            SizedBox(height: 30),
+                            // ignore: deprecated_member_use
+                            FlatButton(
+                              onPressed: () async {
+                                if (fKey1.currentState.validate()) {
+                                  try {
+                                    setState(() {
+                                      isLoadingForgot = true;
+                                    });
+                                    final FirebaseAuth _firebaseAuth =
+                                        FirebaseAuth.instance;
+                                    await _firebaseAuth.sendPasswordResetEmail(
+                                        email: forgot.text.toString());
+                                    fToast.showToast(
+                                      child: ToastWidget.toast(
+                                          'Password reset link sent on your email',
+                                          Icon(Icons.done, size: 20)),
+                                      toastDuration: Duration(seconds: 2),
+                                      gravity: ToastGravity.BOTTOM,
+                                    );
+
+                                    setState(() {
+                                      isLoadingForgot = false;
+                                    });
+                                    Navigator.pop(context);
+                                  } catch (e) {
+                                    Navigator.pop(context);
+
+                                    setState(() {
+                                      isLoadingForgot = false;
+                                    });
+                                    if (e.code == 'too-many-requests') {
+                                      fToast.showToast(
+                                        child: ToastWidget.toast(
+                                            'You are trying too often. Please try again later',
+                                            Icon(Icons.error, size: 20)),
+                                        toastDuration: Duration(seconds: 2),
+                                        gravity: ToastGravity.BOTTOM,
+                                      );
+                                    } else {
+                                      fToast.showToast(
+                                        child: ToastWidget.toast(
+                                            'Operation failed. Try again later',
+                                            Icon(Icons.error, size: 20)),
+                                        toastDuration: Duration(seconds: 2),
+                                        gravity: ToastGravity.BOTTOM,
+                                      );
+                                    }
+                                  }
+                                }
+                              },
+                              height: 40,
+                              color: navyBlue,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Center(
+                                child: isLoadingForgot == true
+                                    ? Container(
+                                        height: 40,
+                                        width: 40,
+                                        padding: EdgeInsets.all(10),
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                                  Colors.white),
+                                        ),
+                                      )
+                                    : Text(
+                                        'RESET',
+                                        style: TextStyle(
+                                            fontFamily: 'Sofia',
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )));
+            },
+          );
+        }).then((value) {
+      forgot.clear();
+      FocusScope.of(context).unfocus();
+    });
   }
 
   int validateEmail(String value) {

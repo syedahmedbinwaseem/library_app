@@ -98,9 +98,10 @@ class _IssuedState extends State<Issued> {
                                     return Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.15,
+                                        padding: EdgeInsets.all(10),
+                                        // height:
+                                        //     MediaQuery.of(context).size.height *
+                                        //         0.15,
                                         width:
                                             MediaQuery.of(context).size.width *
                                                 0.95,
