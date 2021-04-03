@@ -48,7 +48,7 @@ class _UserDashboardState extends State<UserDashboard> {
               color: navyBlue,
               child: Center(
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.07,
+                  height: MediaQuery.of(context).size.height * 0.08,
                   width: MediaQuery.of(context).size.width * 0.9,
                   padding: EdgeInsets.only(left: 5),
                   decoration: BoxDecoration(
