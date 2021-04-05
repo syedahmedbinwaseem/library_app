@@ -106,7 +106,7 @@ class _UsersState extends State<Users> {
                                       secondaryActions: [
                                         Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 8),
+                                              const EdgeInsets.only(left: 0),
                                           child: Container(
                                             height: MediaQuery.of(context)
                                                     .size

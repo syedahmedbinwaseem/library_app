@@ -49,11 +49,12 @@ class _BookDetailsState extends State<BookDetails> {
                     ),
                     backgroundColor: navyBlue,
                   ),
-                  body: SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 40),
+                  body: Padding(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 40),
+                    child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
                             'Book Name:',
@@ -114,16 +115,20 @@ class _BookDetailsState extends State<BookDetails> {
                           ),
                           SizedBox(height: 20),
                           snapshot.data['issued'] == ''
-                              ? Expanded(
-                                  child: Center(
-                                      child: Text(
-                                  'Not issued to anyone.\nClick on the button below to issue this book.',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontFamily: 'Sofia',
-                                  ),
-                                )))
+                              ? Flexible(
+                                  fit: FlexFit.loose,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 30),
+                                    child: Center(
+                                        child: Text(
+                                      'Not issued to anyone.\nClick on the button below to issue this book.',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: 'Sofia',
+                                      ),
+                                    )),
+                                  ))
                               : Slidable(
                                   actionPane: SlidableDrawerActionPane(),
                                   secondaryActions: DateTime.now().compareTo(

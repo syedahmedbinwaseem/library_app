@@ -119,7 +119,7 @@ class _AvailableBooksState extends State<AvailableBooks> {
                                           secondaryActions: [
                                             Padding(
                                               padding: const EdgeInsets.only(
-                                                  left: 8),
+                                                  left: 0),
                                               child: Container(
                                                 height: MediaQuery.of(context)
                                                         .size
