@@ -59,10 +59,11 @@ class _AdDashboardState extends State<AdDashboard> {
                           try {
                             await FirebaseAuth.instance.signOut();
                           } catch (e) {}
-
-                          Navigator.of(context, rootNavigator: true)
-                              .pushReplacement(MaterialPageRoute(
-                                  builder: (context) => LoginScreen()));
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginScreen()),
+                              (route) => false);
                         },
                         child: Text(
                           'Yes',

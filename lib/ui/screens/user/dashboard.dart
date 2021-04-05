@@ -42,62 +42,101 @@ class _UserDashboardState extends State<UserDashboard> {
         ),
         body: Column(
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              width: MediaQuery.of(context).size.width,
-              color: navyBlue,
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: TextField(
-                    textCapitalization: TextCapitalization.words,
-                    controller: searchItems,
-                    cursorColor: pink,
-                    style: TextStyle(fontFamily: 'Sofia'),
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          Icons.clear,
-                          size: 18,
-                        ),
-                        onPressed: () {
-                          searchItems.clear();
-                        },
-                      ),
-                      prefixIcon: Icon(
-                        Icons.search,
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      disabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      hintText: 'Search',
-                      hintStyle: TextStyle(
-                        fontFamily: 'Sofia',
-                      ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                padding: EdgeInsets.only(left: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                child: Stack(
+                  children: [
+                    TextField(
+                      textCapitalization: TextCapitalization.words,
+                      controller: searchItems,
+                      style: TextStyle(fontFamily: 'Sofia'),
+                      decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              Icons.clear,
+                              size: 18,
+                            ),
+                            onPressed: () {
+                              searchItems.clear();
+                            },
+                          ),
+                          contentPadding: EdgeInsets.only(top: 17),
+                          prefixIcon: Icon(Icons.search),
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          hintText: 'Search',
+                          hintStyle: TextStyle(fontFamily: 'Sofia')),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ),
+            //  Container(
+            //          height: MediaQuery.of(context).size.height * 0.1,
+            //        width: MediaQuery.of(context).size.width,
+            //      color: navyBlue,
+            //    child: Center(
+            //       child: Padding(
+            //           padding:
+            //                 const EdgeInsets.only(left: 15, right: 15, bottom: 5),
+            //               child: TextField(
+            //   textCapitalization: TextCapitalization.words,
+            //     controller: searchItems,
+            //       cursorColor: pink,
+            //      style: TextStyle(fontFamily: 'Sofia'),
+            //        decoration: InputDecoration(
+            //           suffixIcon: IconButton(
+            ///           icon: Icon(
+            //          Icons.clear,
+            //        size: 18,
+            //    ),
+            //   onPressed: () {
+            //                    searchItems.clear();
+            //                },
+            //            ),
+            //          prefixIcon: Icon(
+            //          Icons.search,
+            //      ),
+            //    border: OutlineInputBorder(
+            //    borderSide: BorderSide.none,
+            //  borderRadius: BorderRadius.circular(10),
+            //                     ),
+            //                   fillColor: Colors.white,
+            //                 filled: true,
+            //               focusedBorder: OutlineInputBorder(
+            //               borderSide: BorderSide.none,
+            //             borderRadius: BorderRadius.circular(10),
+            //         ),
+            //       enabledBorder: OutlineInputBorder(
+            //       borderSide: BorderSide.none,
+            //     borderRadius: BorderRadius.circular(10),
+            //              ),
+            //            errorBorder: OutlineInputBorder(
+            //            borderSide: BorderSide.none,
+            //          borderRadius: BorderRadius.circular(10),
+            //      ),
+            //    disabledBorder: OutlineInputBorder(
+            //    borderSide: BorderSide.none,
+//                      //  borderRadius: BorderRadius.circular(10),
+            //                    ),
+            //                  hintText: 'Search',
+            //                hintStyle: TextStyle(
+            //                fontFamily: 'Sofia',
+            //            ),
+            //        ),
+            //    ),
+            //               ),
+            //           ),
+            //       ),
             Expanded(
               child: Container(
                 height: MediaQuery.of(context).size.height,
